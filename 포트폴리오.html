@@ -1,0 +1,3088 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)file:///C:/Users/skagu/Downloads/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_4.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포트폴리오</title>
+<link href="file:///C:/Users/skagu/Downloads/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_files/css2" rel="stylesheet">
+<script>
+(function() {
+  var urls = [
+    'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js',
+    'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js',
+    'https://unpkg.com/chart.js@4.4.1/dist/chart.umd.min.js'
+  ];
+  var i = 0;
+  function tryLoad() {
+    if (i >= urls.length) { console.error('Chart.js 로드 실패'); return; }
+    var s = document.createElement('script');
+    s.src = urls[i++];
+    s.onload = function() { console.log('Chart.js loaded from', s.src); };
+    s.onerror = function() { console.warn('실패:', s.src); tryLoad(); };
+    document.head.appendChild(s);
+  }
+  tryLoad();
+})();
+</script><script src="./포트폴리오_files/chart.umd.min.js.다운로드"></script><script src="file:///C:/Users/skagu/Downloads/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_files/chart.umd.min.js.%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C"></script>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #11111a;
+  --bg3: #181824;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #f0f0f8;
+  --text2: #8888aa;
+  --text3: #55556a;
+  --accent: #7c6fff;
+  --accent2: #a99fff;
+  --up: #3dd68c;
+  --down: #ff6b6b;
+  --up-bg: rgba(61,214,140,0.1);
+  --down-bg: rgba(255,107,107,0.1);
+  --gold: #f5c842;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-size:14px;min-height:100vh;}
+.mono{font-family:'DM Mono',monospace;}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:100;}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:0.05em;color:var(--accent2);}
+.nav-tabs{display:flex;gap:2px;}
+.nav-tab{padding:6px 16px;border-radius:6px;font-size:13px;color:var(--text2);cursor:pointer;border:none;background:none;transition:all 0.15s;}
+.nav-tab:hover{color:var(--text);background:var(--bg3);}
+.nav-tab.active{color:var(--text);background:var(--bg3);}
+.nav-actions{display:flex;gap:8px;align-items:center;}
+.btn{padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--text2);transition:all 0.15s;font-family:'Noto Sans KR',sans-serif;}
+.btn:hover{color:var(--text);border-color:var(--accent);}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+.btn-primary:hover{background:#9580ff;border-color:#9580ff;color:#fff;}
+.btn-sm{padding:4px 10px;font-size:11px;}
+
+/* LAYOUT */
+.page{display:none;padding:1.5rem 2rem;max-width:1200px;margin:0 auto;}
+.page.active{display:block;}
+
+/* KPI */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:1.5rem;}
+.kpi-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;}
+.kpi-label{font-size:11px;color:var(--text3);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;}
+.kpi-value{font-size:22px;font-weight:700;font-family:'DM Mono',monospace;}
+.kpi-sub{font-size:11px;color:var(--text2);margin-top:3px;}
+.up{color:var(--up);} .down{color:var(--down);}
+
+/* GRID 2COL */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1.5rem;}
+@media(max-width:768px){
+  .grid-2{grid-template-columns:1fr;}
+  .chart-wrap{height:200px!important;}
+  .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  nav{padding:0 1rem;}
+  .nav-tabs{gap:0;}
+  .nav-tab{padding:6px 10px;font-size:12px;}
+  .page{padding:1rem;}
+}
+
+/* CARD */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem;}
+.card-title{font-size:12px;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{text-align:left;color:var(--text3);font-weight:400;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding:6px 10px;border-bottom:1px solid var(--border);}
+td{padding:10px 10px;border-bottom:1px solid var(--border);color:var(--text);}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--bg3);}
+.badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500;}
+.badge-crypto{background:rgba(124,111,255,0.15);color:var(--accent2);}
+.badge-stock{background:rgba(61,214,140,0.1);color:#3dd68c;}
+.badge-etf{background:rgba(245,200,66,0.1);color:var(--gold);}
+.badge-other{background:rgba(255,255,255,0.06);color:var(--text2);}
+.inactive td{opacity:0.4;}
+
+/* CHART */
+.chart-wrap{position:relative;height:220px;}
+.chart-filters{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;align-items:center;}
+.cf-btn{font-size:11px;padding:3px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--text3);font-family:'Noto Sans KR',sans-serif;transition:all 0.15s;}
+.cf-btn:hover{color:var(--text2);border-color:var(--border2);}
+.cf-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.cf-divider{width:1px;height:16px;background:var(--border);}
+
+/* PIE */
+.pie-area{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.pie-wrap{position:relative;width:160px;height:160px;flex-shrink:0;}
+.pie-wrap svg{width:100%;height:100%;}
+.pie-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;}
+.pie-center-val{font-size:14px;font-weight:700;font-family:'DM Mono',monospace;}
+.pie-center-label{font-size:10px;color:var(--text3);margin-top:2px;}
+.pie-legend{display:flex;flex-direction:column;gap:8px;flex:1;min-width:140px;}
+.pl-item{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 6px;border-radius:6px;transition:background 0.1s;}
+.pl-item:hover{background:var(--bg3);}
+.pl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.pl-name{font-size:12px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pl-pct{font-size:12px;font-family:'DM Mono',monospace;color:var(--text2);}
+
+/* FORM */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-full{grid-column:1/-1;}
+.field label{font-size:11px;color:var(--text3);display:block;margin-bottom:5px;letter-spacing:0.04em;}
+.field input,.field select,.field textarea{width:100%;padding:8px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg3);color:var(--text);outline:none;font-family:'Noto Sans KR',sans-serif;transition:border-color 0.15s;}
+.field input:focus,.field select:focus{border-color:var(--accent);}
+.field select option{background:var(--bg2);}
+.type-row{display:flex;gap:6px;margin-bottom:12px;}
+.type-btn{flex:1;padding:7px;font-size:13px;border-radius:6px;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--text2);text-align:center;transition:all 0.15s;font-family:'Noto Sans KR',sans-serif;}
+.type-btn.buy.active{background:var(--up-bg);color:var(--up);border-color:var(--up);}
+.type-btn.sell.active{background:var(--down-bg);color:var(--down);border-color:var(--down);}
+.type-btn.div.active{background:rgba(124,111,255,0.15);color:var(--accent2);border-color:var(--accent);}
+.preview-box{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-size:13px;color:var(--text2);margin-bottom:12px;min-height:38px;}
+.preview-box strong{color:var(--text);}
+
+/* TRADE LIST */
+.trade-item{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg3);border-radius:8px;margin-bottom:6px;font-size:13px;}
+.trade-name{font-weight:500;min-width:100px;}
+.trade-detail{flex:1;color:var(--text2);font-size:12px;}
+.trade-amt{font-family:'DM Mono',monospace;font-size:13px;flex-shrink:0;}
+.trade-date{font-size:11px;color:var(--text3);flex-shrink:0;min-width:70px;text-align:right;}
+.del-btn{background:none;border:none;cursor:pointer;color:var(--text3);font-size:13px;padding:2px 4px;flex-shrink:0;transition:color 0.15s;}
+.del-btn:hover{color:var(--down);}
+
+/* STATUS */
+.status-bar{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text3);margin-bottom:1rem;}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--up);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.status-dot.loading{background:var(--gold);animation:pulse 0.8s infinite;}
+.status-dot.error{background:var(--down);animation:none;}
+
+/* TOOLTIP */
+.tooltip{position:fixed;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;font-size:12px;pointer-events:none;opacity:0;transition:opacity 0.15s;z-index:999;min-width:160px;}
+.tooltip.show{opacity:1;}
+.tt-date{color:var(--text3);font-size:11px;margin-bottom:6px;}
+.tt-row{display:flex;justify-content:space-between;gap:16px;margin-top:3px;}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:1.5rem;width:90%;max-width:480px;}
+.modal-title{font-size:15px;font-weight:700;margin-bottom:1.2rem;color:var(--text);}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:1.2rem;}
+
+/* SHARE */
+.share-box{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-size:12px;word-break:break-all;color:var(--accent2);font-family:'DM Mono',monospace;margin-top:10px;max-height:80px;overflow:auto;}
+
+/* EMPTY */
+.empty{text-align:center;padding:2.5rem;color:var(--text3);font-size:13px;}
+
+/* READONLY BANNER */
+.readonly-banner{background:rgba(124,111,255,0.1);border:1px solid rgba(124,111,255,0.3);border-radius:8px;padding:10px 16px;font-size:13px;color:var(--accent2);margin-bottom:1rem;display:none;}
+
+.section-gap{margin-bottom:1.5rem;}
+
+/* MARKET TICKER BAR */
+.market-bar{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;margin-bottom:1.2rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:0 4px;}
+.market-bar::-webkit-scrollbar{display:none;}
+.market-item{display:flex;flex-direction:column;align-items:center;padding:10px 16px;min-width:110px;flex-shrink:0;border-right:1px solid var(--border);cursor:default;}
+.market-item:last-child{border-right:none;}
+.market-label{font-size:10px;color:var(--text3);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px;white-space:nowrap;}
+.market-value{font-size:14px;font-weight:700;font-family:'DM Mono',monospace;white-space:nowrap;}
+.market-change{font-size:10px;margin-top:2px;font-family:'DM Mono',monospace;}
+.fg-badge{font-size:9px;padding:1px 7px;border-radius:8px;margin-top:3px;font-weight:600;letter-spacing:0.03em;white-space:nowrap;}
+.fg-gauge{width:80px;height:6px;border-radius:3px;margin-top:5px;background:var(--bg3);overflow:hidden;position:relative;}
+.fg-gauge-fill{height:100%;border-radius:3px;transition:width 0.5s ease;}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">PORTFOLIO</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage(&#39;dashboard&#39;)">대시보드</button>
+    <button class="nav-tab" onclick="showPage(&#39;trades&#39;)">거래 관리</button>
+    <button class="nav-tab" onclick="showPage(&#39;assets&#39;)">종목 관리</button>
+    <button class="nav-tab" onclick="showPage(&#39;valuation&#39;)">밸류에이션</button>
+    <button class="nav-tab" onclick="showPage(&#39;income&#39;)">급여 관리</button>
+    <button class="nav-tab" onclick="showPage(&#39;settings&#39;)">설정</button>
+  </div>
+  <div class="nav-actions">
+    <button class="btn btn-sm" onclick="refreshPrices()">↻ 새로고침</button>
+    <button class="btn btn-sm btn-primary" onclick="openShareModal()">공유</button>
+  </div>
+</nav>
+
+<!-- READONLY BANNER -->
+<div style="padding:0 2rem;max-width:1200px;margin:0 auto;">
+  <div class="readonly-banner" id="readonly-banner">👁 읽기 전용 모드입니다. 데이터를 수정할 수 없습니다.</div>
+</div>
+
+<!-- ===== 대시보드 ===== -->
+<div id="page-dashboard" class="page active">
+  <div class="status-bar">
+    <div class="status-dot" id="status-dot"></div>
+    <span id="status-text">업데이트 완료</span>
+    <span id="last-updated">· 22:17 기준</span>
+    <span id="stock-cache-info" style="margin-left:8px;padding:2px 8px;background:var(--bg3);border-radius:10px;font-size:10px;color:var(--text3);">주식 23:06 캐시</span>
+  </div>
+
+  <!-- 마켓 티커 바 -->
+  <div class="market-bar" id="market-bar">
+    <div class="market-item"><div class="market-label">KOSPI</div><div class="market-value mono" id="mk-kospi">5,781.2</div><div class="market-change" id="mk-kospi-chg" style="color: var(--down);">▼ 2.43%</div></div>
+    <div class="market-item"><div class="market-label">S&amp;P 500</div><div class="market-value mono" id="mk-sp500">6,506.48</div><div class="market-change" id="mk-sp500-chg" style="color: var(--down);">▼ 1.78%</div></div>
+    <div class="market-item"><div class="market-label">NASDAQ</div><div class="market-value mono" id="mk-ndx">21,647.61</div><div class="market-change" id="mk-ndx-chg" style="color: var(--down);">▼ 2.28%</div></div>
+    <div class="market-item"><div class="market-label">Gold (USD)</div><div class="market-value mono" id="mk-gold">$4,446.7</div><div class="market-change" id="mk-gold-chg" style="color: var(--down);">▼ 0.70%</div></div>
+    <div class="market-item"><div class="market-label">BTC (KRW)</div><div class="market-value mono" id="mk-btc">1.05억원</div><div class="market-change" id="mk-btc-chg" style="color: var(--up);">▲ 1.81%</div></div>
+    <div class="market-item"><div class="market-label">USD/KRW</div><div class="market-value mono" id="mk-usdkrw">1,489.3원</div><div class="market-change" id="mk-usdkrw-chg"></div></div>
+    <div class="market-item"><div class="market-label">김치 프리미엄</div><div class="market-value mono" id="mk-kimchi" style="color: var(--text2);">+0.08%</div><div class="market-change" id="mk-kimchi-sub" style="font-size:9px;color:var(--text3);">업비트 1.05억원</div></div>
+    <div class="market-item" style="min-width:130px;">
+      <div class="market-label">크립토 공탐</div>
+      <div class="market-value mono" id="mk-fgc" style="color: var(--down);">8</div>
+      <div class="fg-gauge"><div class="fg-gauge-fill" id="mk-fgc-gauge" style="width: 8%; background: rgb(255, 107, 107);"></div></div>
+      <div id="mk-fgc-badge"><span class="fg-badge" style="color:var(--down);font-size:9px;">극단적 공포</span></div>
+    </div>
+    <div class="market-item" style="min-width:160px;" title="국토교통부 분양권전매 실거래가 기준 · 전용 59㎡">
+      <div class="market-label">금정푸르지오 59㎡</div>
+      <div class="market-value mono" id="mk-gj" style="color: var(--text3);">거래없음</div>
+      <div class="market-change" id="mk-gj-sub" style="font-size:9px;color:var(--text3);">전용 59㎡ 분양권전매</div>
+      <div class="market-change" id="mk-gj-date" style="font-size:9px;color:var(--text3);">신고된 거래 없음</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid" id="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">총 평가액</div><div class="kpi-value mono">3.22억</div><div class="kpi-sub">원</div></div>
+    <div class="kpi-card"><div class="kpi-label">순자산</div><div class="kpi-value mono up">2.09억</div><div class="kpi-sub" style="color:var(--down);">부채 -1.13억원</div></div>
+    <div class="kpi-card"><div class="kpi-label">총 매입원금</div><div class="kpi-value mono">2.71억</div><div class="kpi-sub">원</div></div>
+    <div class="kpi-card"><div class="kpi-label">평가 손익</div><div class="kpi-value mono up">+5,128만</div><div class="kpi-sub">원</div></div>
+    <div class="kpi-card"><div class="kpi-label">수익률</div><div class="kpi-value up">+18.9%</div></div>
+    <div class="kpi-card"><div class="kpi-label">역대 최고</div><div class="kpi-value mono up">5.71억</div><div class="kpi-sub">원</div></div>
+    <div class="kpi-card"><div class="kpi-label">ATH 경과일</div><div class="kpi-value mono" style="font-size:18px;">169일</div><div class="kpi-sub" style="color:var(--text3);">169일 전 (2025-10-05)</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">자산 배분</div>
+      <div class="pie-area">
+        <div class="pie-wrap"><svg id="pie-svg" viewBox="0 0 160 160"><path d="M80,36 L80,8 A72,72 0 1,1 65.04839751577519,150.43045920021905 L70.86290959297372,123.04083617791164 A44,44 0 1,0 80,36 Z" fill="#7c6fff" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;BTC&#39;,171862945.74580002,53.3)" onmouseout="this.style.opacity=0.9;hideTip()"></path><path d="M70.86290959297372,123.04083617791164 L65.04839751577519,150.43045920021905 A72,72 0 0,1 34.53082056658928,135.82610251174893 L52.21327923513789,114.11595153495767 A44,44 0 0,0 70.86290959297372,123.04083617791164 Z" fill="#3dd68c" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;ACE Tsla 벨류체인&#39;,24328310,7.5)" onmouseout="this.style.opacity=0.9;hideTip()"></path><path d="M52.21327923513789,114.11595153495767 L34.53082056658928,135.82610251174893 A72,72 0 0,1 19.925757677868447,119.68734570895134 L43.28796302536405,104.25337793324805 A44,44 0 0,0 52.21327923513789,114.11595153495767 Z" fill="#f5c842" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;삼성전자&#39;,15565200,4.8)" onmouseout="this.style.opacity=0.9;hideTip()"></path><path d="M43.28796302536405,104.25337793324805 L19.925757677868447,119.68734570895134 A72,72 0 0,1 11.063723408287984,100.77955171968291 L37.87227541617599,92.69861493980622 A44,44 0 0,0 43.28796302536405,104.25337793324805 Z" fill="#ff6b6b" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;SK하이닉스&#39;,14928000,4.6)" onmouseout="this.style.opacity=0.9;hideTip()"></path><path d="M37.87227541617599,92.69861493980622 L11.063723408287984,100.77955171968291 A72,72 0 0,1 8.352898685204707,87.11989277921079 L36.2156603076251,84.35104558729549 A44,44 0 0,0 37.87227541617599,92.69861493980622 Z" fill="#60cdff" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;한화에어로스페이스&#39;,9936000,3.1)" onmouseout="this.style.opacity=0.9;hideTip()"></path><path d="M36.2156603076251,84.35104558729549 L8.352898685204707,87.11989277921079 A72,72 0 0,1 8.369671283652224,72.71329923847813 L36.225910228898584,75.54701620129218 A44,44 0 0,0 36.2156603076251,84.35104558729549 Z" fill="#ff9d5c" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;효성중공업&#39;,10280000,3.2)" onmouseout="this.style.opacity=0.9;hideTip()"></path><path d="M36.225910228898584,75.54701620129218 L8.369671283652224,72.71329923847813 A72,72 0 0,1 11.405850409045982,58.11752660475003 L38.08135302775032,66.62737736956946 A44,44 0 0,0 36.225910228898584,75.54701620129218 Z" fill="#c084fc" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;이수페타시스&#39;,10639200,3.3)" onmouseout="this.style.opacity=0.9;hideTip()"></path><path d="M38.08135302775032,66.62737736956946 L11.405850409045982,58.11752660475003 A72,72 0 0,1 16.94416761480359,45.24425224211086 L41.46588020904664,58.76037637017886 A44,44 0 0,0 38.08135302775032,66.62737736956946 Z" fill="#4ade80" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;두산에너빌리티&#39;,9999000,3.1)" onmouseout="this.style.opacity=0.9;hideTip()"></path><path d="M41.46588020904664,58.76037637017886 L16.94416761480359,45.24425224211086 A72,72 0 0,1 24.62830523697769,33.978533062594714 L46.161742089264145,51.87577020491899 A44,44 0 0,0 41.46588020904664,58.76037637017886 Z" fill="#f87171" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;리노공업&#39;,9729000,3.0)" onmouseout="this.style.opacity=0.9;hideTip()"></path><path d="M46.161742089264145,51.87577020491899 L24.62830523697769,33.978533062594714 A72,72 0 0,1 79.99999999999993,8 L79.99999999999996,36 A44,44 0 0,0 46.161742089264145,51.87577020491899 Z" fill="#facc15" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,&#39;금정푸르지오&#39;,45000000,14.0)" onmouseout="this.style.opacity=0.9;hideTip()"></path></svg>
+          <div class="pie-center"><div class="pie-center-val" id="pie-center-val">3.22억</div><div class="pie-center-label">총 평가액</div></div>
+        </div>
+        <div class="pie-legend" id="pie-legend"><div class="pl-item"><div class="pl-dot" style="background:#7c6fff;"></div><span class="pl-name">BTC</span><span class="pl-pct">53.3%</span></div><div class="pl-item"><div class="pl-dot" style="background:#3dd68c;"></div><span class="pl-name">ACE Tsla 벨류체인</span><span class="pl-pct">7.5%</span></div><div class="pl-item"><div class="pl-dot" style="background:#f5c842;"></div><span class="pl-name">삼성전자</span><span class="pl-pct">4.8%</span></div><div class="pl-item"><div class="pl-dot" style="background:#ff6b6b;"></div><span class="pl-name">SK하이닉스</span><span class="pl-pct">4.6%</span></div><div class="pl-item"><div class="pl-dot" style="background:#60cdff;"></div><span class="pl-name">한화에어로스페이스</span><span class="pl-pct">3.1%</span></div><div class="pl-item"><div class="pl-dot" style="background:#ff9d5c;"></div><span class="pl-name">효성중공업</span><span class="pl-pct">3.2%</span></div><div class="pl-item"><div class="pl-dot" style="background:#c084fc;"></div><span class="pl-name">이수페타시스</span><span class="pl-pct">3.3%</span></div><div class="pl-item"><div class="pl-dot" style="background:#4ade80;"></div><span class="pl-name">두산에너빌리티</span><span class="pl-pct">3.1%</span></div><div class="pl-item"><div class="pl-dot" style="background:#f87171;"></div><span class="pl-name">리노공업</span><span class="pl-pct">3.0%</span></div><div class="pl-item"><div class="pl-dot" style="background:#facc15;"></div><span class="pl-name">금정푸르지오</span><span class="pl-pct">14.0%</span></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">
+        <span>자산 추이</span>
+        <div style="display:flex;gap:4px;">
+          <button class="cf-btn active" onclick="setMode(&#39;value&#39;,this)" id="mode-value">평가액</button>
+          <button class="cf-btn" onclick="setMode(&#39;roi&#39;,this)" id="mode-roi">수익률</button>
+        </div>
+      </div>
+      <div class="chart-filters">
+        <button class="cf-btn active" onclick="setRange(&#39;all&#39;,this)">전체</button>
+        <button class="cf-btn" onclick="setRange(&#39;1y&#39;,this)">1년</button>
+        <button class="cf-btn" onclick="setRange(&#39;6m&#39;,this)">6개월</button>
+        <button class="cf-btn" onclick="setRange(&#39;3m&#39;,this)">3개월</button>
+      </div>
+      <div class="chart-wrap"><canvas id="trend-chart" width="519" height="220" style="display: block; box-sizing: border-box; height: 220px; width: 519px;"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card section-gap">
+    <div class="card-title">보유 현황</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>종목</th><th>구분</th><th>수량</th><th>현재가</th>
+            <th>평가금액</th><th>매입원금</th><th>수익금액</th><th>수익률</th><th>밸류</th>
+          </tr>
+        </thead>
+        <tbody id="holdings-tbody"><tr>
+      <td><strong>BTC</strong></td>
+      <td><span class="badge badge-crypto">크립토</span></td>
+      <td class="mono">1.6306</td>
+      <td class="mono"><span style="cursor:pointer;" onclick="editPrice(&#39;btc&#39;)" title="클릭하여 수정">₩105,398,593 ✎</span></td>
+      <td class="mono">1.72억</td>
+      <td class="mono">1.23억</td>
+      <td class="mono up">+4,886만</td>
+      <td class="up">+39.7%</td>
+      <td><span style="font-size:12px;color:var(--accent2);" class="mono">$1.41T</span></td>
+    </tr><tr>
+      <td><strong>ACE Tsla 벨류체인</strong></td>
+      <td><span class="badge badge-etf">ETF</span></td>
+      <td class="mono">1234</td>
+      <td class="mono"><span style="cursor:pointer;" onclick="editPrice(&#39;ace&#39;)" title="클릭하여 수정">₩19,715 ✎</span></td>
+      <td class="mono">2,433만</td>
+      <td class="mono">1,619만</td>
+      <td class="mono up">+814만</td>
+      <td class="up">+50.2%</td>
+      <td><span style="color:var(--text3);font-size:11px;">-</span></td>
+    </tr><tr>
+      <td><strong>삼성전자</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td class="mono">84</td>
+      <td class="mono"><span style="cursor:pointer;" onclick="editPrice(&#39;sec&#39;)" title="클릭하여 수정">₩185,300 ✎</span></td>
+      <td class="mono">1,557만</td>
+      <td class="mono">1,719만</td>
+      <td class="mono down">-162만</td>
+      <td class="down">-9.4%</td>
+      <td><span class="mono" style="font-size:12px;color:var(--up);">5.6x</span></td>
+    </tr><tr>
+      <td><strong>SK하이닉스</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td class="mono">16</td>
+      <td class="mono"><span style="cursor:pointer;" onclick="editPrice(&#39;skh&#39;)" title="클릭하여 수정">₩933,000 ✎</span></td>
+      <td class="mono">1,493만</td>
+      <td class="mono">1,644만</td>
+      <td class="mono down">-151만</td>
+      <td class="down">-9.2%</td>
+      <td><span class="mono" style="font-size:12px;color:var(--up);">4.1x</span></td>
+    </tr><tr>
+      <td><strong>한화에어로스페이스</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td class="mono">8</td>
+      <td class="mono"><span style="cursor:pointer;" onclick="editPrice(&#39;hwa&#39;)" title="클릭하여 수정">₩1,242,000 ✎</span></td>
+      <td class="mono">994만</td>
+      <td class="mono">989만</td>
+      <td class="mono up">+5만</td>
+      <td class="up">+0.5%</td>
+      <td><span class="mono" style="font-size:12px;color:var(--up);">14.7x</span></td>
+    </tr><tr>
+      <td><strong>효성중공업</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td class="mono">4</td>
+      <td class="mono"><span style="cursor:pointer;" onclick="editPrice(&#39;hsc&#39;)" title="클릭하여 수정">₩2,570,000 ✎</span></td>
+      <td class="mono">1,028만</td>
+      <td class="mono">1,161만</td>
+      <td class="mono down">-133만</td>
+      <td class="down">-11.5%</td>
+      <td><span class="mono" style="font-size:12px;color:var(--gold);">22.2x</span></td>
+    </tr><tr>
+      <td><strong>이수페타시스</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td class="mono">93</td>
+      <td class="mono"><span style="cursor:pointer;" onclick="editPrice(&#39;isp&#39;)" title="클릭하여 수정">₩114,400 ✎</span></td>
+      <td class="mono">1,064만</td>
+      <td class="mono">1,082만</td>
+      <td class="mono down">-18만</td>
+      <td class="down">-1.7%</td>
+      <td><span class="mono" style="font-size:12px;color:var(--gold);">23.7x</span></td>
+    </tr><tr>
+      <td><strong>두산에너빌리티</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td class="mono">101</td>
+      <td class="mono"><span style="cursor:pointer;" onclick="editPrice(&#39;dse&#39;)" title="클릭하여 수정">₩99,000 ✎</span></td>
+      <td class="mono">1,000만</td>
+      <td class="mono">1,080만</td>
+      <td class="mono down">-80만</td>
+      <td class="down">-7.4%</td>
+      <td><span class="mono" style="font-size:12px;color:var(--down);">52.8x</span></td>
+    </tr><tr>
+      <td><strong>리노공업</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td class="mono">94</td>
+      <td class="mono"><span style="cursor:pointer;" onclick="editPrice(&#39;rno&#39;)" title="클릭하여 수정">₩103,500 ✎</span></td>
+      <td class="mono">973만</td>
+      <td class="mono">1,005만</td>
+      <td class="mono down">-32만</td>
+      <td class="down">-3.2%</td>
+      <td><span class="mono" style="font-size:12px;color:var(--down);">39.4x</span></td>
+    </tr><tr>
+      <td><strong>금정푸르지오</strong></td>
+      <td><span class="badge badge-other">기타</span></td>
+      <td class="mono">1</td>
+      <td class="mono">-</td>
+      <td class="mono">4,500만</td>
+      <td class="mono">4,500만</td>
+      <td class="mono up">+0</td>
+      <td class="up">+0.0%</td>
+      <td></td>
+    </tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 거래 관리 ===== -->
+<div id="page-trades" class="page">
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">거래 입력</div>
+      <div class="type-row">
+        <button class="type-btn buy active" onclick="setTradeType(&#39;buy&#39;,this)">매수</button>
+        <button class="type-btn sell" onclick="setTradeType(&#39;sell&#39;,this)">매도</button>
+        <button class="type-btn div" onclick="setTradeType(&#39;div&#39;,this)">배당/이자</button>
+      </div>
+      <div class="form-grid">
+        <div class="field form-full">
+          <label>종목</label>
+          <select id="t-ticker"><option value="btc">BTC</option><option value="ace">ACE Tsla 벨류체인</option><option value="sec">삼성전자</option><option value="skh">SK하이닉스</option><option value="hwa">한화에어로스페이스</option><option value="hsc">효성중공업</option><option value="isp">이수페타시스</option><option value="dse">두산에너빌리티</option><option value="rno">리노공업</option><option value="kgp">금정푸르지오</option></select>
+        </div>
+        <div class="field" id="t-qty-wrap">
+          <label>수량</label>
+          <input type="number" id="t-qty" placeholder="0" step="any" oninput="updatePreview()">
+        </div>
+        <div class="field" id="t-price-wrap">
+          <label>단가 (원)</label>
+          <input type="number" id="t-price" placeholder="0" oninput="updatePreview()">
+        </div>
+        <div class="field form-full" id="t-amount-wrap" style="display:none;">
+          <label>수령 금액 (원)</label>
+          <input type="number" id="t-amount" placeholder="0" oninput="updatePreview()">
+        </div>
+        <div class="field">
+          <label>날짜</label>
+          <input type="date" id="t-date">
+        </div>
+        <div class="field">
+          <label>메모</label>
+          <input type="text" id="t-memo" placeholder="선택사항">
+        </div>
+      </div>
+      <div class="preview-box" id="t-preview">종목·수량·단가를 입력하면 미리보기가 표시됩니다.</div>
+      <button class="btn btn-primary" style="width:100%;padding:10px;" onclick="addTrade()">거래 추가</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span>거래 내역</span>
+        <div style="display:flex;gap:4px;">
+          <button class="cf-btn active" onclick="setTradeFilter(&#39;all&#39;,this)">전체</button>
+          <button class="cf-btn" onclick="setTradeFilter(&#39;buy&#39;,this)">매수</button>
+          <button class="cf-btn" onclick="setTradeFilter(&#39;sell&#39;,this)">매도</button>
+          <button class="cf-btn" onclick="setTradeFilter(&#39;div&#39;,this)">배당</button>
+        </div>
+      </div>
+      <div id="trade-list" style="max-height:420px;overflow-y:auto;"><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">ACE Tsla 벨류체인</span>
+      <span class="trade-detail">25주 × 19,715원</span>
+      <span class="trade-amt down">-492,875원</span>
+      <span class="trade-date">2026-03-23</span>
+      <button class="del-btn" onclick="deleteTrade(1774271578209)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">BTC</span>
+      <span class="trade-detail">1.6306주 × 75,432,356원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-123,000,000원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000000)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">ACE Tsla 벨류체인</span>
+      <span class="trade-detail">1209주 × 12,986원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-15,700,000원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000001)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">삼성전자</span>
+      <span class="trade-detail">84주 × 204,634원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-17,189,250원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000002)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">SK하이닉스</span>
+      <span class="trade-detail">16주 × 1,027,469원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-16,439,500원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000003)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">한화에어로스페이스</span>
+      <span class="trade-detail">8주 × 1,236,000원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-9,888,000원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000004)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">효성중공업</span>
+      <span class="trade-detail">4주 × 2,903,000원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-11,612,000원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000005)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">이수페타시스</span>
+      <span class="trade-detail">93주 × 116,327원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-10,818,400원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000006)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">두산에너빌리티</span>
+      <span class="trade-detail">101주 × 106,914원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-10,798,300원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000007)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">리노공업</span>
+      <span class="trade-detail">94주 × 106,953원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-10,053,600원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000008)">✕</button>
+    </div><div class="trade-item">
+      <span class="badge badge-stock" style="font-size:10px;">매수</span>
+      <span class="trade-name">금정푸르지오</span>
+      <span class="trade-detail">1주 × 45,000,000원 · 초기 매수 (일괄 세팅)</span>
+      <span class="trade-amt down">-45,000,000원</span>
+      <span class="trade-date">2023-12-17</span>
+      <button class="del-btn" onclick="deleteTrade(1700000000009)">✕</button>
+    </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 종목 관리 ===== -->
+<div id="page-assets" class="page">
+
+  <!-- 새 종목 추가 카드 -->
+  <div class="card section-gap">
+    <div class="card-title">+ 새 종목 추가</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px;">
+      <div class="field">
+        <label>종목명</label>
+        <input type="text" id="a-name" placeholder="예: 현대차">
+      </div>
+      <div class="field">
+        <label>구분</label>
+        <select id="a-type" onchange="onAssetTypeChange()">
+          <option value="stock">국내 주식</option>
+          <option value="etf">ETF</option>
+          <option value="crypto">크립토</option>
+          <option value="other">기타 (수동)</option>
+        </select>
+      </div>
+      <div class="field" id="a-code-wrap">
+        <label id="a-code-label">야후 파이낸스 코드</label>
+        <input type="text" id="a-code" placeholder="005380.KS">
+      </div>
+      <div class="field" id="a-manual-wrap" style="display:none;grid-column:3;">
+        <label>현재 평가금액 (원)</label>
+        <input type="number" id="a-manual-price" placeholder="45000000">
+      </div>
+    </div>
+    <div style="background:var(--bg3);border-radius:6px;padding:8px 12px;font-size:12px;color:var(--text3);margin-bottom:10px;line-height:1.7;">
+      💡 <strong style="color:var(--text2);">코드 형식 안내</strong><br>
+      · 국내 주식/ETF: 종목코드 + .KS (코스피) 또는 .KQ (코스닥) — 예: <span style="color:var(--accent2);">005380.KS</span><br>
+      · 크립토: CoinGecko ID — 예: <span style="color:var(--accent2);">bitcoin</span>, <span style="color:var(--accent2);">ethereum</span>, <span style="color:var(--accent2);">solana</span>
+    </div>
+    <button class="btn btn-primary" style="padding:10px 24px;font-size:14px;" onclick="addAsset()">✚ 종목 추가</button>
+  </div>
+
+  <!-- 보유 종목 목록 -->
+  <div class="card">
+    <div class="card-title">
+      <span>보유 종목 목록</span>
+      <span style="font-size:11px;color:var(--text3);">✕ = 비활성화 &nbsp; ↺ = 재활성화</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>종목명</th><th>구분</th><th>코드</th><th>수량</th><th>상태</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="asset-list">
+    <tr style="">
+      <td><strong>BTC</strong></td>
+      <td><span class="badge badge-crypto">크립토</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">bitcoin</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">1.6306</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;btc&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  
+    <tr style="">
+      <td><strong>ACE Tsla 벨류체인</strong></td>
+      <td><span class="badge badge-etf">ETF</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">457480.KS</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">1234</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;ace&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  
+    <tr style="">
+      <td><strong>삼성전자</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">005930.KS</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">84</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;sec&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  
+    <tr style="">
+      <td><strong>SK하이닉스</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">000660.KS</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">16</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;skh&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  
+    <tr style="">
+      <td><strong>한화에어로스페이스</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">012450.KS</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">8</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;hwa&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  
+    <tr style="">
+      <td><strong>효성중공업</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">298040.KS</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">4</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;hsc&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  
+    <tr style="">
+      <td><strong>이수페타시스</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">007660.KS</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">93</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;isp&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  
+    <tr style="">
+      <td><strong>두산에너빌리티</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">034020.KS</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">101</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;dse&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  
+    <tr style="">
+      <td><strong>리노공업</strong></td>
+      <td><span class="badge badge-stock">주식</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">058470.KS</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">94</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;rno&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  
+    <tr style="">
+      <td><strong>금정푸르지오</strong></td>
+      <td><span class="badge badge-other">기타</span></td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;font-size:12px;color:var(--text3);">수동입력</td>
+      <td style="font-family:&#39;DM Mono&#39;,monospace;">1</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--up-bg);color:var(--up);">활성</span></td>
+      <td><button class="del-btn" onclick="toggleAsset(&#39;kgp&#39;)" style="font-size:16px;" title="비활성화">✕</button></td>
+    </tr>
+  </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 밸류에이션 ===== -->
+<div id="page-valuation" class="page">
+  <div class="card section-gap">
+    <div class="card-title">
+      <span>26년 예상 순이익 입력</span>
+      <span style="font-size:11px;color:var(--text3);font-weight:400;text-transform:none;letter-spacing:0;">주식·ETF 종목만 표시 · 억원 단위 입력</span>
+    </div>
+    <p style="font-size:12px;color:var(--text3);margin-bottom:1rem;line-height:1.6;">입력한 예상 순이익과 자동 조회된 시가총액으로 <strong style="color:var(--text2);">Forward PER</strong>을 계산합니다. 시가총액은 새로고침 시 자동 업데이트됩니다.</p>
+    <div id="valuation-list"><div style="margin-bottom:14px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="flex:1;font-size:13px;font-weight:500;">ACE Tsla 벨류체인</span>
+          <span class="badge badge-etf" style="font-size:10px;">ETF</span>
+          <div><span style="font-size:11px;color:var(--text3);">-</span></div>
+        </div>
+        
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;padding:6px 10px;background:rgba(124,111,255,0.06);border-radius:6px;border:1px solid rgba(124,111,255,0.15);">
+          <span style="font-size:11px;color:var(--accent2);flex-shrink:0;">참조 티커</span>
+          <input type="text" value="TSLA" placeholder="예: TSLA" style="flex:1;padding:4px 8px;font-size:12px;border:1px solid var(--border2);border-radius:4px;background:var(--bg3);color:var(--text);font-family:&#39;DM Mono&#39;,monospace;" onchange="updateRefTicker(&#39;ace&#39;, this.value)">
+          <span style="font-size:10px;color:var(--text3);">해외 티커면 야후 시총 사용</span>
+        </div>
+        
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">발행주식수</span>
+          <input type="number" value="320000" placeholder="0" min="0" step="0.1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateShares(&#39;ace&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">만주</span>
+          
+          <span style="font-size:10px;color:var(--text3);">· TSLA USD 현재가 × 환율 × 발행주식수</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">26년 예상 순이익</span>
+          <input type="number" value="105000" placeholder="0" min="0" step="1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateFwdEarnings(&#39;ace&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">억원</span>
+        </div>
+      </div><div style="margin-bottom:14px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="flex:1;font-size:13px;font-weight:500;">삼성전자</span>
+          <span class="badge badge-stock" style="font-size:10px;">주식</span>
+          <div><span style="font-size:11px;padding:2px 10px;border-radius:10px;background:rgba(61,214,140,0.12);color:var(--up);">PER 6.0x</span></div>
+        </div>
+        
+        
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">발행주식수</span>
+          <input type="number" value="591963" placeholder="0" min="0" step="0.1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateShares(&#39;sec&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">만주</span>
+          <span style="font-size:11px;color:var(--text3);">→ 시총 <span style="font-size:11px;color:var(--text2);">1180.4조</span></span>
+          <span style="font-size:10px;color:var(--text3);">· 현재가 × 발행주식수 자동 계산</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">26년 예상 순이익</span>
+          <input type="number" value="1970000" placeholder="0" min="0" step="1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateFwdEarnings(&#39;sec&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">억원</span>
+        </div>
+      </div><div style="margin-bottom:14px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="flex:1;font-size:13px;font-weight:500;">SK하이닉스</span>
+          <span class="badge badge-stock" style="font-size:10px;">주식</span>
+          <div><span style="font-size:11px;padding:2px 10px;border-radius:10px;background:rgba(61,214,140,0.12);color:var(--up);">PER 4.4x</span></div>
+        </div>
+        
+        
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">발행주식수</span>
+          <input type="number" value="71697" placeholder="0" min="0" step="0.1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateShares(&#39;skh&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">만주</span>
+          <span style="font-size:11px;color:var(--text3);">→ 시총 <span style="font-size:11px;color:var(--text2);">722.0조</span></span>
+          <span style="font-size:10px;color:var(--text3);">· 현재가 × 발행주식수 자동 계산</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">26년 예상 순이익</span>
+          <input type="number" value="1640834" placeholder="0" min="0" step="1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateFwdEarnings(&#39;skh&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">억원</span>
+        </div>
+      </div><div style="margin-bottom:14px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="flex:1;font-size:13px;font-weight:500;">한화에어로스페이스</span>
+          <span class="badge badge-stock" style="font-size:10px;">주식</span>
+          <div><span style="font-size:11px;padding:2px 10px;border-radius:10px;background:rgba(245,200,66,0.1);color:var(--gold);">PER 15.7x</span></div>
+        </div>
+        
+        
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">발행주식수</span>
+          <input type="number" value="5156" placeholder="0" min="0" step="0.1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateShares(&#39;hwa&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">만주</span>
+          <span style="font-size:11px;color:var(--text3);">→ 시총 <span style="font-size:11px;color:var(--text2);">68.1조</span></span>
+          <span style="font-size:10px;color:var(--text3);">· 현재가 × 발행주식수 자동 계산</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">26년 예상 순이익</span>
+          <input type="number" value="43423" placeholder="0" min="0" step="1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateFwdEarnings(&#39;hwa&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">억원</span>
+        </div>
+      </div><div style="margin-bottom:14px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="flex:1;font-size:13px;font-weight:500;">효성중공업</span>
+          <span class="badge badge-stock" style="font-size:10px;">주식</span>
+          <div><span style="font-size:11px;padding:2px 10px;border-radius:10px;background:rgba(245,200,66,0.1);color:var(--gold);">PER 23.4x</span></div>
+        </div>
+        
+        
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">발행주식수</span>
+          <input type="number" value="932" placeholder="0" min="0" step="0.1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateShares(&#39;hsc&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">만주</span>
+          <span style="font-size:11px;color:var(--text3);">→ 시총 <span style="font-size:11px;color:var(--text2);">25.2조</span></span>
+          <span style="font-size:10px;color:var(--text3);">· 현재가 × 발행주식수 자동 계산</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">26년 예상 순이익</span>
+          <input type="number" value="10766" placeholder="0" min="0" step="1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateFwdEarnings(&#39;hsc&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">억원</span>
+        </div>
+      </div><div style="margin-bottom:14px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="flex:1;font-size:13px;font-weight:500;">이수페타시스</span>
+          <span class="badge badge-stock" style="font-size:10px;">주식</span>
+          <div><span style="font-size:11px;padding:2px 10px;border-radius:10px;background:rgba(255,107,107,0.1);color:var(--down);">PER 26.2x</span></div>
+        </div>
+        
+        
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">발행주식수</span>
+          <input type="number" value="7341" placeholder="0" min="0" step="0.1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateShares(&#39;isp&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">만주</span>
+          <span style="font-size:11px;color:var(--text3);">→ 시총 <span style="font-size:11px;color:var(--text2);">9.3조</span></span>
+          <span style="font-size:10px;color:var(--text3);">· 현재가 × 발행주식수 자동 계산</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">26년 예상 순이익</span>
+          <input type="number" value="3547" placeholder="0" min="0" step="1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateFwdEarnings(&#39;isp&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">억원</span>
+        </div>
+      </div><div style="margin-bottom:14px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="flex:1;font-size:13px;font-weight:500;">두산에너빌리티</span>
+          <span class="badge badge-stock" style="font-size:10px;">주식</span>
+          <div><span style="font-size:11px;padding:2px 10px;border-radius:10px;background:rgba(255,107,107,0.1);color:var(--down);">PER 58.5x</span></div>
+        </div>
+        
+        
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">발행주식수</span>
+          <input type="number" value="64056" placeholder="0" min="0" step="0.1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateShares(&#39;dse&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">만주</span>
+          <span style="font-size:11px;color:var(--text3);">→ 시총 <span style="font-size:11px;color:var(--text2);">70.2조</span></span>
+          <span style="font-size:10px;color:var(--text3);">· 현재가 × 발행주식수 자동 계산</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">26년 예상 순이익</span>
+          <input type="number" value="12000" placeholder="0" min="0" step="1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateFwdEarnings(&#39;dse&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">억원</span>
+        </div>
+      </div><div style="margin-bottom:14px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="flex:1;font-size:13px;font-weight:500;">리노공업</span>
+          <span class="badge badge-stock" style="font-size:10px;">주식</span>
+          <div><span style="font-size:11px;padding:2px 10px;border-radius:10px;background:rgba(255,107,107,0.1);color:var(--down);">PER 42.7x</span></div>
+        </div>
+        
+        
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">발행주식수</span>
+          <input type="number" value="7621" placeholder="0" min="0" step="0.1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateShares(&#39;rno&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">만주</span>
+          <span style="font-size:11px;color:var(--text3);">→ 시총 <span style="font-size:11px;color:var(--text2);">8.5조</span></span>
+          <span style="font-size:10px;color:var(--text3);">· 현재가 × 발행주식수 자동 계산</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">26년 예상 순이익</span>
+          <input type="number" value="2000" placeholder="0" min="0" step="1" style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);" onchange="updateFwdEarnings(&#39;rno&#39;, this.value)">
+          <span style="font-size:12px;color:var(--text3);">억원</span>
+        </div>
+      </div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">시가총액 조회 현황</div>
+    <div id="mktcap-status-list">
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">
+      <button class="btn btn-sm" onclick="fetchMarketCaps()">↻ 해외 시총 새로고침</button>
+      <span style="font-size:11px;color:var(--text3);">USD/KRW 1,505.319원</span>
+      <span style="font-size:11px;color:var(--text3);">· 국내 종목은 현재가 × 발행주식수 자동 계산</span>
+    </div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead><tr>
+        <th style="text-align:left;color:var(--text3);font-size:11px;letter-spacing:0.05em;padding:6px 10px;border-bottom:1px solid var(--border);">종목</th>
+        <th style="text-align:left;color:var(--text3);font-size:11px;letter-spacing:0.05em;padding:6px 10px;border-bottom:1px solid var(--border);">시가총액</th>
+        <th style="text-align:left;color:var(--text3);font-size:11px;letter-spacing:0.05em;padding:6px 10px;border-bottom:1px solid var(--border);">Forward PER</th>
+      </tr></thead>
+      <tbody><tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>BTC</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span class="mono" style="color:var(--accent2);">$1.41T</span></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--text3);">-</span></td>
+        </tr><tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>ACE Tsla 벨류체인</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--text3);font-size:11px;">시총 조회 중...</span></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--text3);">시총 필요</span></td>
+        </tr><tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>삼성전자</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span class="mono">1180.4조</span></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--up);" class="mono">6.0x</span></td>
+        </tr><tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>SK하이닉스</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span class="mono">722.0조</span></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--up);" class="mono">4.4x</span></td>
+        </tr><tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>한화에어로스페이스</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span class="mono">68.1조</span></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--gold);" class="mono">15.7x</span></td>
+        </tr><tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>효성중공업</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span class="mono">25.2조</span></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--gold);" class="mono">23.4x</span></td>
+        </tr><tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>이수페타시스</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span class="mono">9.3조</span></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--down);" class="mono">26.2x</span></td>
+        </tr><tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>두산에너빌리티</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span class="mono">70.2조</span></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--down);" class="mono">58.5x</span></td>
+        </tr><tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>리노공업</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span class="mono">8.5조</span></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><span style="color:var(--down);" class="mono">42.7x</span></td>
+        </tr></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ===== 급여 관리 ===== -->
+<div id="page-income" class="page">
+
+  <!-- 연도별 연봉 등록 -->
+  <div class="grid-2" style="margin-bottom:1.5rem;">
+    <div class="card">
+      <div class="card-title">연도별 급여 등록</div>
+      <p style="font-size:12px;color:var(--text3);margin-bottom:1rem;line-height:1.6;">연봉과 해당 연도 소득세(연말정산 확정세액)를 입력하면 4대보험을 자동 계산해 세후 실수령액을 산출합니다.</p>
+      <div class="form-grid" style="margin-bottom:12px;">
+        <div class="field">
+          <label>연도</label>
+          <input type="number" id="inc-year" placeholder="2024" min="2000" max="2100" style="font-size:15px;">
+        </div>
+        <div class="field">
+          <label>연봉 (세전, 만원)</label>
+          <input type="number" id="inc-salary" placeholder="5000" min="0">
+        </div>
+        <div class="field">
+          <label>부양가족 수 (본인 포함)</label>
+          <input type="number" id="inc-dependents" placeholder="1" min="1" max="20" value="1">
+        </div>
+        <div class="field">
+          <label>연간 소득세 (연말정산 확정, 만원)</label>
+          <input type="number" id="inc-tax" placeholder="0" min="0">
+        </div>
+      </div>
+      <div class="preview-box" id="inc-preview">연봉과 소득세를 입력하면 실수령액 미리보기가 표시됩니다.</div>
+      <button class="btn btn-primary" style="width:100%;" onclick="addIncomeYear()">등록</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">4대보험 계산 기준 <span style="font-size:10px;color:var(--text3);font-weight:400;">(2024년 기준)</span></div>
+      <table style="width:100%;font-size:12px;border-collapse:collapse;">
+        <tbody><tr><td style="padding:6px 0;color:var(--text3);">국민연금</td><td class="mono" style="text-align:right;color:var(--text2);">4.5% (월 상한 24.3만)</td></tr>
+        <tr><td style="padding:6px 0;color:var(--text3);">건강보험</td><td class="mono" style="text-align:right;color:var(--text2);">3.545%</td></tr>
+        <tr><td style="padding:6px 0;color:var(--text3);">장기요양</td><td class="mono" style="text-align:right;color:var(--text2);">건보료의 12.95%</td></tr>
+        <tr><td style="padding:6px 0;color:var(--text3);">고용보험</td><td class="mono" style="text-align:right;color:var(--text2);">0.9%</td></tr>
+        <tr style="border-top:1px solid var(--border);"><td style="padding:8px 0;font-weight:600;">소득세</td><td class="mono" style="text-align:right;color:var(--text2);">직접 입력 (연말정산 기준)</td></tr>
+        <tr><td style="padding:4px 0;color:var(--text3);">지방소득세</td><td class="mono" style="text-align:right;color:var(--text2);">소득세의 10%</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <!-- 연도별 급여 내역 -->
+  <div class="card">
+    <div class="card-title">연도별 급여 내역</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>연도</th>
+            <th>세전 연봉</th>
+            <th>국민연금</th>
+            <th>건강+장기요양</th>
+            <th>고용보험</th>
+            <th>소득세+지방세</th>
+            <th>세후 실수령 (연)</th>
+            <th>월 실수령</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="income-tbody"><tr>
+    <td><strong>2022년</strong></td>
+    <td class="mono">6,405만</td>
+    <td class="mono down">288.2만</td>
+    <td class="mono down">256.5만</td>
+    <td class="mono down">57.6만</td>
+    <td class="mono down">262.9만</td>
+    <td class="mono up" style="font-weight:700;">5,539.8만</td>
+    <td class="mono">461.7만</td>
+    <td><button class="del-btn" onclick="deleteIncomeYear(2022)">✕</button></td>
+  </tr><tr>
+    <td><strong>2023년</strong></td>
+    <td class="mono">7,781만</td>
+    <td class="mono down">318.6만</td>
+    <td class="mono down">311.5만</td>
+    <td class="mono down">70만</td>
+    <td class="mono down">521.4만</td>
+    <td class="mono up" style="font-weight:700;">6,559.4만</td>
+    <td class="mono">546.6만</td>
+    <td><button class="del-btn" onclick="deleteIncomeYear(2023)">✕</button></td>
+  </tr><tr>
+    <td><strong>2024년</strong></td>
+    <td class="mono">9,922만</td>
+    <td class="mono down">318.6만</td>
+    <td class="mono down">397.2만</td>
+    <td class="mono down">89.3만</td>
+    <td class="mono down">953.7만</td>
+    <td class="mono up" style="font-weight:700;">8,163.1만</td>
+    <td class="mono">680.3만</td>
+    <td><button class="del-btn" onclick="deleteIncomeYear(2024)">✕</button></td>
+  </tr><tr>
+    <td><strong>2025년</strong></td>
+    <td class="mono">8,700만</td>
+    <td class="mono down">318.6만</td>
+    <td class="mono down">348.3만</td>
+    <td class="mono down">78.3만</td>
+    <td class="mono down">660.0만</td>
+    <td class="mono up" style="font-weight:700;">7,294.7만</td>
+    <td class="mono">607.9만</td>
+    <td><button class="del-btn" onclick="deleteIncomeYear(2025)">✕</button></td>
+  </tr></tbody>
+      </table>
+    </div>
+    <div style="margin-top:1rem;padding:12px;background:var(--bg3);border-radius:8px;display:flex;gap:24px;flex-wrap:wrap;">
+      <div><div style="font-size:10px;color:var(--text3);margin-bottom:3px;">총 세전 누적</div><div class="mono" id="inc-total-gross" style="font-size:15px;font-weight:700;">32,808만원</div></div>
+      <div><div style="font-size:10px;color:var(--text3);margin-bottom:3px;">총 세후 누적 실수령</div><div class="mono up" id="inc-total-net" style="font-size:15px;font-weight:700;">27,557만원</div></div>
+      <div><div style="font-size:10px;color:var(--text3);margin-bottom:3px;">총 공제액</div><div class="mono down" id="inc-total-deduct" style="font-size:15px;font-weight:700;">5,251만원</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 설정 ===== -->
+<div id="page-settings" class="page">
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">데이터 백업 / 복원</div>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;line-height:1.6;">모든 데이터(종목, 거래내역, 히스토리)를 JSON 파일로 내보내거나 불러올 수 있어요.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <button class="btn" style="text-align:left;" onclick="exportData()">⬇ JSON으로 내보내기</button>
+        <label class="btn" style="text-align:left;cursor:pointer;">
+          ⬆ JSON 불러오기
+          <input type="file" accept=".json" style="display:none;" onchange="importData(event)">
+        </label>
+        <button class="btn" style="text-align:left;color:var(--down);" onclick="clearData()">✕ 모든 데이터 초기화</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">부동산 / 수동 종목 가격 업데이트</div>
+      <div id="manual-price-list">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <span style="flex:1;font-size:13px;">금정푸르지오</span>
+      <input type="number" value="45000000" style="width:140px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg3);color:var(--text);" onchange="updateManualPrice(&#39;kgp&#39;,this.value)">
+      <span style="font-size:12px;color:var(--text3);">원</span>
+    </div>
+  </div>
+    </div>
+  </div>
+  <!-- 부채 관리 -->
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title">부채 관리 <span style="font-size:11px;color:var(--text3);font-weight:400;">· 순자산 = 총평가액 - 총부채</span></div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <div class="field" style="flex:3;margin:0;min-width:140px;">
+          <label>항목명</label>
+          <input type="text" id="liab-name" placeholder="예: 주담대, 신용대출" style="width:100%;">
+        </div>
+        <div class="field" style="flex:2;margin:0;min-width:130px;">
+          <label>금액 (원)</label>
+          <input type="number" id="liab-amount" placeholder="100000000" style="width:100%;">
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+        <div class="field" style="flex:1;margin:0;min-width:130px;">
+          <label>📅 시작일 <span style="color:var(--text3);font-size:10px;">(대출 발생일)</span></label>
+          <input type="date" id="liab-date" style="width:100%;">
+        </div>
+        <div class="field" style="flex:1;margin:0;min-width:130px;">
+          <label>✅ 상환일 <span style="color:var(--text3);font-size:10px;">(완납일, 선택)</span></label>
+          <input type="date" id="liab-repay-date" style="width:100%;">
+        </div>
+        <button class="btn btn-primary" onclick="addLiability()" style="padding:8px 20px;flex-shrink:0;">+ 추가</button>
+      </div>
+      <div style="font-size:11px;color:var(--text3);padding:6px 10px;background:var(--bg3);border-radius:6px;">
+        💡 시작일부터 순자산 차트에 반영 · 상환일 입력 시 그 날 이후 자동 제외
+      </div>
+    </div>
+    <div id="liability-list">
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg3);border-radius:8px;margin-bottom:6px;">
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:13px;font-weight:500;">신용대출</span>
+          
+        </div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;">
+          시작: 2023-03-01
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <span class="mono" style="color:var(--down);font-size:13px;text-decoration:none;">-1,000만원</span>
+        <button class="btn btn-sm" onclick="openRepayModal(1774188788315)" style="font-size:11px;padding:3px 10px;color:var(--up);border-color:var(--up);">상환</button>
+        <button class="del-btn" onclick="deleteLiability(1774188788315)">✕</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg3);border-radius:8px;margin-bottom:6px;">
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:13px;font-weight:500;">신용대출</span>
+          
+        </div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;">
+          시작: 2024-01-01
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <span class="mono" style="color:var(--down);font-size:13px;text-decoration:none;">-2,500만원</span>
+        <button class="btn btn-sm" onclick="openRepayModal(1774188820835)" style="font-size:11px;padding:3px 10px;color:var(--up);border-color:var(--up);">상환</button>
+        <button class="del-btn" onclick="deleteLiability(1774188820835)">✕</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg3);border-radius:8px;margin-bottom:6px;">
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:13px;font-weight:500;">신용대출</span>
+          
+        </div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;">
+          시작: 2024-06-01
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <span class="mono" style="color:var(--down);font-size:13px;text-decoration:none;">-3,000만원</span>
+        <button class="btn btn-sm" onclick="openRepayModal(1774188843745)" style="font-size:11px;padding:3px 10px;color:var(--up);border-color:var(--up);">상환</button>
+        <button class="del-btn" onclick="deleteLiability(1774188843745)">✕</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg3);border-radius:8px;margin-bottom:6px;">
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:13px;font-weight:500;">신용대출</span>
+          
+        </div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;">
+          시작: 2025-06-01
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <span class="mono" style="color:var(--down);font-size:13px;text-decoration:none;">-2,800만원</span>
+        <button class="btn btn-sm" onclick="openRepayModal(1774188903585)" style="font-size:11px;padding:3px 10px;color:var(--up);border-color:var(--up);">상환</button>
+        <button class="del-btn" onclick="deleteLiability(1774188903585)">✕</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg3);border-radius:8px;margin-bottom:6px;">
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:13px;font-weight:500;">신용대출</span>
+          
+        </div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;">
+          시작: 2025-01-01
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <span class="mono" style="color:var(--down);font-size:13px;text-decoration:none;">-2,000만원</span>
+        <button class="btn btn-sm" onclick="openRepayModal(1774188931959)" style="font-size:11px;padding:3px 10px;color:var(--up);border-color:var(--up);">상환</button>
+        <button class="del-btn" onclick="deleteLiability(1774188931959)">✕</button>
+      </div>
+    </div></div>
+    <div id="liab-total" style="margin-top: 10px; padding: 10px 14px; background: var(--bg3); border-radius: 8px; font-size: 13px; display: block;">
+      <span style="color:var(--text2);">총부채</span>
+      <span class="mono" style="color:var(--down);float:right;font-weight:700;" id="liab-total-val"><span style="color:var(--down);">-1.13억원 현재 잔액</span></span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title">히스토리 스냅샷</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;line-height:1.6;">매주 일요일 자동으로 스냅샷이 저장됩니다. 마지막 스냅샷: <span id="last-snapshot" style="color:var(--text);">2026-03-22</span></p>
+    <button class="btn" onclick="saveSnapshot()">지금 스냅샷 저장</button>
+  </div>
+</div>
+
+<!-- 부채 상환 모달 -->
+<div class="modal-overlay" id="repay-modal">
+  <div class="modal">
+    <div class="modal-title" id="repay-modal-title">신용대출 상환</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:14px;" id="repay-modal-desc">현재 잔액: 1,000만원</p>
+    <div class="form-grid">
+      <div class="field form-full">
+        <label>상환 금액 (원)</label>
+        <input type="number" id="repay-amount" placeholder="1000000" style="font-size:15px;">
+      </div>
+      <div class="field form-full">
+        <label>상환일</label>
+        <input type="date" id="repay-date">
+      </div>
+    </div>
+    <div id="repay-preview" style="margin:10px 0;padding:10px 14px;background:var(--bg3);border-radius:6px;font-size:13px;color:var(--text2);">상환 금액을 입력하면 미리보기가 표시됩니다.</div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal(&#39;repay-modal&#39;)">취소</button>
+      <button class="btn btn-primary" onclick="confirmRepay()">상환 확정</button>
+    </div>
+  </div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="modal-overlay" id="share-modal">
+  <div class="modal">
+    <div class="modal-title">읽기 전용 공유 링크</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:8px;">아래 링크를 공유하면 상대방이 읽기 전용으로 포트폴리오를 볼 수 있어요.</p>
+    <button class="btn" style="width:100%;margin-bottom:8px;" onclick="generateShareLink()">🔗 링크 생성</button>
+    <div class="share-box" id="share-box" style="display:none;"></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal(&#39;share-modal&#39;)">닫기</button>
+      <button class="btn btn-primary" id="copy-btn" style="display:none;" onclick="copyShareLink()">복사</button>
+    </div>
+  </div>
+</div>
+
+<!-- 가격 수정 모달 -->
+<div class="modal-overlay" id="edit-price-modal">
+  <div class="modal">
+    <div class="modal-title" id="edit-price-title">효성중공업 현재가 수정</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:12px;" id="edit-price-desc">직접 현재가를 입력하면 캐시에 저장돼요. 다음 1시간 캐시 갱신 전까지 유지됩니다.</p>
+    <div class="field">
+      <label>현재가 (원)</label>
+      <input type="number" id="edit-price-input" placeholder="예: 1007000" style="font-size:16px;">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal(&#39;edit-price-modal&#39;)">취소</button>
+      <button class="btn btn-primary" onclick="confirmEditPrice()">저장</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD ASSET CONFIRM MODAL -->
+<div class="modal-overlay" id="delete-asset-modal">
+  <div class="modal">
+    <div class="modal-title" id="delete-modal-title">종목 비활성화</div>
+    <p style="font-size:13px;color:var(--text2);" id="delete-modal-body"></p>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal(&#39;delete-asset-modal&#39;)">취소</button>
+      <button class="btn" style="color:var(--down);border-color:var(--down);" id="delete-confirm-btn">확인</button>
+    </div>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip" style="left: 1286px; top: 420px;"><div class="tt-date">2025-03-02</div>
+              <div class="tt-row"><span style="color:#7c6fff">순자산</span><strong style="color:#7c6fff">2.64억</strong></div>
+              <div class="tt-row"><span style="color:var(--text2)">총평가액</span><strong>3.49억</strong></div>
+              <div class="tt-row"><span style="color:var(--down)">부채</span><strong style="color:var(--down)">-8,500만</strong></div>
+              <div class="tt-row"><span style="color:var(--text2)">원금</span><strong>1.92억</strong></div>
+              <div class="tt-row"><span style="color:var(--text2)">수익률</span><strong style="color:var(--up)">+82%</strong></div>
+              <div class="tt-row"><span style="color:#f5c842">누적근로소득</span><strong style="color:#f5c842">2.21억</strong></div></div>
+
+<script>
+// ==================== CONSTANTS ====================
+const STORAGE_KEY = 'pf_v2';
+const READONLY_PARAM = 'data';
+
+const COLORS = ['#7c6fff','#3dd68c','#f5c842','#ff6b6b','#60cdff','#ff9d5c','#c084fc','#4ade80','#f87171','#facc15','#38bdf8','#fb923c'];
+
+const DEFAULT_ASSETS = [{"id": "btc", "name": "BTC", "type": "crypto", "code": "bitcoin", "qty": 1.6306, "manualPrice": null, "active": true}, {"id": "ace", "name": "ACE Tsla 벨류체인", "type": "etf", "code": "457480.KS", "qty": 1209, "manualPrice": null, "active": true}, {"id": "sec", "name": "삼성전자", "type": "stock", "code": "005930.KS", "qty": 84, "manualPrice": null, "active": true}, {"id": "skh", "name": "SK하이닉스", "type": "stock", "code": "000660.KS", "qty": 16, "manualPrice": null, "active": true}, {"id": "hwa", "name": "한화에어로스페이스", "type": "stock", "code": "012450.KS", "qty": 8, "manualPrice": null, "active": true}, {"id": "hsc", "name": "효성중공업", "type": "stock", "code": "298040.KS", "qty": 4, "manualPrice": null, "active": true}, {"id": "isp", "name": "이수페타시스", "type": "stock", "code": "007660.KS", "qty": 93, "manualPrice": null, "active": true}, {"id": "dse", "name": "두산에너빌리티", "type": "stock", "code": "034020.KS", "qty": 101, "manualPrice": null, "active": true}, {"id": "rno", "name": "리노공업", "type": "stock", "code": "058470.KS", "qty": 94, "manualPrice": null, "active": true}, {"id": "kgp", "name": "금정푸르지오", "type": "other", "code": null, "qty": 1, "manualPrice": 45000000, "active": true}];
+
+const DEFAULT_TRADES = [{"id": 1700000000000, "ticker": "btc", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 1.6306, "price": 75432356, "amount": 123000000}, {"id": 1700000000001, "ticker": "ace", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 1209, "price": 12986, "amount": 15700000}, {"id": 1700000000002, "ticker": "sec", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 84, "price": 204634, "amount": 17189250}, {"id": 1700000000003, "ticker": "skh", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 16, "price": 1027469, "amount": 16439500}, {"id": 1700000000004, "ticker": "hwa", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 8, "price": 1236000, "amount": 9888000}, {"id": 1700000000005, "ticker": "hsc", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 4, "price": 2903000, "amount": 11612000}, {"id": 1700000000006, "ticker": "isp", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 93, "price": 116327, "amount": 10818400}, {"id": 1700000000007, "ticker": "dse", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 101, "price": 106914, "amount": 10798300}, {"id": 1700000000008, "ticker": "rno", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 94, "price": 106953, "amount": 10053600}, {"id": 1700000000009, "ticker": "kgp", "type": "buy", "date": "2023-12-17", "memo": "초기 매수 (일괄 세팅)", "qty": 1, "price": 45000000, "amount": 45000000}];
+
+const WEEKLY_HISTORY = [
+["2023-12-17",90826475,52660000,72.5],["2023-12-24",92180759,53660000,71.8],["2023-12-31",87966392,53660000,63.9],["2024-01-07",90606348,53560000,69.2],["2024-01-14",91567451,53460000,71.3],["2024-01-21",88601810,54200000,63.5],["2024-01-28",90590430,54200000,67.1],["2024-02-04",89704570,54200000,65.5],["2024-02-11",115125500,68700000,67.5],["2024-02-18",128518100,68700000,87.1],["2024-02-25",131976400,72700000,81.5],["2024-03-03",148443600,62700000,136.8],["2024-03-10",169063100,66200000,155.4],["2024-03-17",167812900,66200000,153.5],["2024-03-24",169747600,67200000,152.6],["2024-03-31",179771300,67200000,167.5],["2024-04-07",172852300,67200000,157.2],["2024-04-14",168853600,67200000,151.3],["2024-04-21",169838000,68200000,149.0],["2024-04-28",159706900,68200000,134.2],["2024-05-05",158105000,68200000,131.8],["2024-05-12",147967400,68200000,116.9],["2024-05-19",158133600,68200000,131.9],["2024-05-26",161522100,69200000,133.4],["2024-06-02",164405000,69200000,137.6],["2024-06-09",168327300,69200000,143.2],["2024-06-16",157453400,69200000,127.5],["2024-06-23",181335700,94900000,91.1],["2024-06-30",175767600,94900000,85.2],["2024-07-07",169073100,102600000,64.8],["2024-07-14",177138300,102600000,72.6],["2024-07-21",198074000,102600000,93.1],["2024-07-28",199396800,103600000,92.5],["2024-08-04",182628200,106600000,71.3],["2024-08-11",184693100,106600000,73.3],["2024-08-25",184726500,107700000,71.5],["2024-09-01",170590500,107700000,58.4],["2024-09-22",186268700,111636683,66.8],["2024-09-29",190750100,111636683,70.9],["2024-10-06",187734600,112636683,66.7],["2024-10-13",192798300,112636683,71.2],["2024-10-20",204514600,112636683,81.6],["2024-10-27",211280700,113636683,85.9],["2024-11-03",213444700,113636683,87.8],["2024-11-10",250251800,113636683,120.2],["2024-11-17",283696600,113636683,149.7],["2024-11-24",295822700,123636683,139.3],["2024-12-01",310008800,123636683,150.7],["2024-12-08",327060200,123636683,164.5],["2024-12-15",344666800,123636683,178.8],["2024-12-22",367316100,146736683,150.3],["2024-12-29",357970100,146736683,143.9],["2025-01-05",362094500,147336683,145.8],["2025-01-12",375429900,169336683,121.7],["2025-01-19",409907000,169336683,142.1],["2025-01-26",406501500,175336683,131.8],["2025-02-02",412802000,175336683,135.4],["2025-02-09",390368300,189036683,106.5],["2025-02-16",397205600,189036683,110.1],["2025-03-02",348573100,191536683,82.0],["2025-03-09",329798600,194936683,69.2],["2025-03-23",345799600,194936683,77.4],["2025-03-30",350891000,194936683,80.0],["2025-04-06",329150800,194936683,68.9],["2025-04-13",321537500,188636683,70.4],["2025-04-20",331022800,199436683,65.9],["2025-04-27",373474200,200736683,86.1],["2025-05-04",375821100,200736683,87.2],["2025-05-11",409913700,210776683,94.5],["2025-05-18",426385900,212776683,100.4],["2025-05-25",427069200,213076683,100.4],["2025-06-01",422561700,213076683,98.3],["2025-06-08",407210700,213076683,91.1],["2025-06-15",415070000,213076683,94.8],["2025-06-22",410389200,213776683,91.9],["2025-06-29",416912400,214076683,94.8],["2025-07-06",418937400,214076683,95.7],["2025-07-13",477402400,238776683,99.9],["2025-07-20",498253300,238776683,108.7],["2025-07-27",492062000,239276683,105.7],["2025-08-03",475353300,243776683,95.0],["2025-08-10",491293500,243776683,101.5],["2025-08-17",521645100,243776683,113.9],["2025-08-24",522905500,244276683,114.1],["2025-08-31",492693200,244276683,101.7],["2025-09-07",498944800,244276683,104.3],["2025-09-14",524367300,244276683,114.7],["2025-09-21",534857000,255076683,109.7],["2025-09-28",514413100,256576683,100.5],["2025-10-05",571324900,258576683,120.9],["2025-10-12",549282100,258576683,124.4],["2025-10-19",521710900,258576683,101.8],["2025-10-26",535897500,259576683,106.5],["2025-11-02",526098900,259576683,102.7],["2025-11-09",480478900,259576683,85.1],["2025-11-16",451871900,259576683,74.1],["2025-11-23",407314200,258576683,57.5],["2025-11-30",422764800,258576683,63.5],["2025-12-07",418888700,259576683,61.4],["2025-12-14",418207300,259576683,61.1],["2025-12-21",415096369,261076683,59.0],["2025-12-28",401445399,262576683,52.9],["2026-01-04",413953216,262576683,57.7],["2026-01-11",418010740,262576683,59.2],["2026-01-18",445436124,265576683,67.7],["2026-01-25",415828781,268076683,55.1],["2026-02-01",363473606,268076683,35.6],["2026-03-08",319565973,265076683,20.6],["2026-03-15",328063739,268402900,22.2],["2026-03-22",335738640,268402900,25.1]
+];
+
+// ==================== STATE ====================
+let state = {
+  assets: [],
+  trades: [],
+  prices: {},
+  history: [],
+  lastSnapshot: null,
+  valuation: {},
+  mktcap: {},
+  income: [], // [{ year, salary(만원), dependents, incomeTax(만원), net(만원) }]
+  liabilities: [], // [{ id, name, amount }]
+};
+let trendChart = null;
+let tradeType = 'buy';
+let tradeFilter = 'all';
+let chartRange = 'all';
+let chartMode = 'value';
+let isReadOnly = false;
+
+// ==================== INIT ====================
+function init() {
+  // 읽기전용 체크
+  const params = new URLSearchParams(location.search);
+  if (params.has(READONLY_PARAM)) {
+    isReadOnly = true;
+    try {
+      const decoded = JSON.parse(decodeURIComponent(atob(params.get(READONLY_PARAM))));
+      state = {...state, ...decoded};
+    } catch(e) {}
+    document.getElementById('readonly-banner').style.display = 'block';
+    document.querySelectorAll('.nav-tab').forEach((t,i) => { if(i>0) t.style.display='none'; });
+    document.querySelector('.nav-actions').style.display = 'none';
+  } else {
+    loadState();
+    if (!state.assets || !state.assets.length) {
+      state.assets = JSON.parse(JSON.stringify(DEFAULT_ASSETS));
+      state.trades = JSON.parse(JSON.stringify(DEFAULT_TRADES));
+      state.history = JSON.parse(JSON.stringify(WEEKLY_HISTORY));
+      saveState();
+    }
+    scheduleSnapshot();
+  }
+
+  document.getElementById('t-date').value = today();
+  const liabDateEl = document.getElementById('liab-date');
+  if (liabDateEl) liabDateEl.value = today();
+  populateTickerSelect();
+  renderAssetList();
+  renderManualPriceList();
+  renderLiabilityList();
+  renderTradeList();
+  updateLastSnapshot();
+  refreshPrices();
+  fetchMarketData(); // 마켓 티커 초기 로드
+  fetchGjPrice();    // 금정푸르지오 분양권전매
+}
+
+function loadState() {
+  try {
+    const s = localStorage.getItem(STORAGE_KEY);
+    if (s) state = {...state, ...JSON.parse(s)};
+  } catch(e){}
+}
+
+function saveState() {
+  if (isReadOnly) return;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function today() { return new Date().toISOString().slice(0,10); }
+
+// ==================== PRICES ====================
+// ==================== MARKET TICKER ====================
+async function fetchMarketData() {
+  const setMk = (id, value, change) => {
+    const el = document.getElementById('mk-' + id);
+    const chgEl = document.getElementById('mk-' + id + '-chg');
+    if (el) el.textContent = value;
+    if (chgEl && change !== null && change !== undefined) {
+      const isUp = change >= 0;
+      chgEl.textContent = (isUp ? '▲' : '▼') + ' ' + Math.abs(change).toFixed(2) + '%';
+      chgEl.style.color = isUp ? 'var(--up)' : 'var(--down)';
+    }
+  };
+
+  // ── 1. CoinGecko: BTC(KRW/USD) + USD/KRW 역산 ──────────────
+  try {
+    const res = await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=krw,usd&include_24hr_change=true',
+      {signal: AbortSignal.timeout(10000)}
+    );
+    const data = await res.json();
+
+    const btcKrw = data?.bitcoin?.krw;
+    const btcChg = data?.bitcoin?.krw_24h_change;
+    const btcUsd = data?.bitcoin?.usd;
+    if (btcKrw) setMk('btc', fmt(btcKrw) + '원', btcChg ?? null);
+
+    if (btcKrw && btcUsd && btcUsd > 0) {
+      const rate = btcKrw / btcUsd;
+      setMk('usdkrw', rate.toLocaleString('ko-KR', {maximumFractionDigits:1}) + '원', null);
+      if (!state.mktcap) state.mktcap = {};
+      state.mktcap['usdkrw'] = rate;
+
+      // 김치프리미엄: 업비트 BTC KRW 가격이 없으니
+      // CoinGecko KRW vs (USD × 환율) 비교
+      // CoinGecko KRW 자체가 국내 거래소 가중평균이라 이걸로 계산
+      // 글로벌 기준: btcUsd × rate (환율로 환산한 글로벌가)
+      const globalKrw = btcUsd * rate; // 사실상 같은 값이 되므로
+      // 더 정확한 방법: 업비트 API로 KRW 가격 별도 조회
+      // CoinGecko가 이미 KRW 거래소 가중평균이라 글로벌과 거의 동일 → 대신 upbit API 사용
+    }
+  } catch(e) {}
+
+  // 업비트 BTC/KRW 실시간가 → 김치프리미엄 정확 계산
+  try {
+    const [upbitRes, binanceRes] = await Promise.all([
+      fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC', {signal: AbortSignal.timeout(6000)}),
+      fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT', {signal: AbortSignal.timeout(6000)}),
+    ]);
+    if (upbitRes.ok && binanceRes.ok) {
+      const upbitData = await upbitRes.json();
+      const binanceData = await binanceRes.json();
+      const upbitPrice = upbitData?.[0]?.trade_price;        // 원화
+      const binancePrice = parseFloat(binanceData?.price);   // USD
+      const usdkrw = state.mktcap?.['usdkrw'] || 1350;
+      if (upbitPrice && binancePrice && usdkrw) {
+        const globalKrw = binancePrice * usdkrw;
+        const kimchi = ((upbitPrice / globalKrw) - 1) * 100;
+        const el = document.getElementById('mk-kimchi');
+        const sub = document.getElementById('mk-kimchi-sub');
+        if (el) {
+          el.textContent = (kimchi >= 0 ? '+' : '') + kimchi.toFixed(2) + '%';
+          el.style.color = kimchi > 2 ? 'var(--up)' : kimchi < -1 ? 'var(--down)' : 'var(--text2)';
+        }
+        if (sub) sub.textContent = `업비트 ${fmt(upbitPrice)}원`;
+      }
+    }
+  } catch(e) {}
+
+  // ── 2. 금 (XAU) — pax-gold는 실물금 1:1 연동 토큰, CoinGecko 지원 ──
+  try {
+    const res = await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids=pax-gold&vs_currencies=usd&include_24hr_change=true',
+      {signal: AbortSignal.timeout(8000)}
+    );
+    const data = await res.json();
+    const goldUsd = data?.['pax-gold']?.usd;
+    const goldChg = data?.['pax-gold']?.usd_24h_change;
+    if (goldUsd && goldUsd > 100) {
+      setMk('gold', '$' + goldUsd.toLocaleString('en-US', {maximumFractionDigits:1}), goldChg ?? null);
+    }
+  } catch(e) {}
+
+  // ── 3. 크립토 공포탐욕지수 — alternative.me ──────────────────────────
+  const fgColor = (v) => {
+    if (v <= 24) return { color:'var(--down)', gaugeColor:'#ff6b6b', label:'극단적 공포' };
+    if (v <= 44) return { color:'#ff9d5c',     gaugeColor:'#ff9d5c', label:'공포' };
+    if (v <= 55) return { color:'var(--text2)', gaugeColor:'#8888aa', label:'중립' };
+    if (v <= 74) return { color:'var(--up)',    gaugeColor:'#3dd68c', label:'탐욕' };
+    return               { color:'#22c55e',     gaugeColor:'#22c55e', label:'극단적 탐욕' };
+  };
+  const setFg = (elId, gaugeId, badgeId, value) => {
+    const el    = document.getElementById(elId);
+    const gauge = document.getElementById(gaugeId);
+    const badge = document.getElementById(badgeId);
+    if (!el) return;
+    const { color, gaugeColor, label } = fgColor(value);
+    el.textContent = value;
+    el.style.color  = color;
+    if (gauge) {
+      gauge.style.width      = value + '%';
+      gauge.style.background = gaugeColor;
+    }
+    if (badge) badge.innerHTML = `<span class="fg-badge" style="color:${color};font-size:9px;">${label}</span>`;
+  };
+
+  try {
+    const res = await fetch('https://api.alternative.me/fng/?limit=1', {signal: AbortSignal.timeout(8000)});
+    const data = await res.json();
+    const val = parseInt(data?.data?.[0]?.value);
+    if (!isNaN(val)) setFg('mk-fgc', 'mk-fgc-gauge', 'mk-fgc-badge', val);
+  } catch(e) {}
+
+  // ── 4. 미장 공포탐욕지수 — 로컬 파일 환경에서 CNN API 접근 불가로 제거
+
+
+  // ── 2. 지수: Marketstack 무료 → allorigins 프록시 순 시도 ──────────────
+  // 로컬 파일 환경에서 가장 잘 되는 CORS 허용 소스들을 순차 시도
+  const fetchIndex = async (symbol, displayName) => {
+    // 시도1: financialmodelingprep (무료, CORS 허용, API키 불필요 일부 엔드포인트)
+    try {
+      const res = await fetch(
+        `https://financialmodelingprep.com/api/v3/quote-short/${symbol}?apikey=demo`,
+        {signal: AbortSignal.timeout(6000)}
+      );
+      if (res.ok) {
+        const data = await res.json();
+        const price = data?.[0]?.price;
+        if (price) return { price, change: null };
+      }
+    } catch(e) {}
+
+    // 시도2: allorigins 프록시로 야후 chart API
+    try {
+      const url = `https://api.allorigins.win/raw?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+symbol+'?interval=1d&range=2d')}`;
+      const res = await fetch(url, {signal: AbortSignal.timeout(8000)});
+      if (res.ok) {
+        const data = await res.json();
+        const meta = data?.chart?.result?.[0]?.meta;
+        if (meta?.regularMarketPrice) {
+          const price = meta.regularMarketPrice;
+          const prev = meta.chartPreviousClose || meta.previousClose;
+          const change = prev ? ((price - prev) / prev * 100) : null;
+          return { price, change };
+        }
+      }
+    } catch(e) {}
+
+    // 시도3: corsproxy.io
+    try {
+      const url = `https://corsproxy.io/?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+symbol+'?interval=1d&range=2d')}`;
+      const res = await fetch(url, {signal: AbortSignal.timeout(8000)});
+      if (res.ok) {
+        const data = await res.json();
+        const meta = data?.chart?.result?.[0]?.meta;
+        if (meta?.regularMarketPrice) {
+          const price = meta.regularMarketPrice;
+          const prev = meta.chartPreviousClose || meta.previousClose;
+          const change = prev ? ((price - prev) / prev * 100) : null;
+          return { price, change };
+        }
+      }
+    } catch(e) {}
+
+    return null;
+  };
+
+  // 코스피
+  const kospi = await fetchIndex('^KS11');
+  if (kospi) setMk('kospi', kospi.price.toLocaleString('ko-KR', {maximumFractionDigits:2}), kospi.change);
+
+  // S&P 500
+  const sp500 = await fetchIndex('%5EGSPC'); // ^GSPC url-encoded
+  if (sp500) setMk('sp500', sp500.price.toLocaleString('en-US', {maximumFractionDigits:2}), sp500.change);
+
+  // 나스닥
+  const ndx = await fetchIndex('%5EIXIC');
+  if (ndx) setMk('ndx', ndx.price.toLocaleString('en-US', {maximumFractionDigits:2}), ndx.change);
+}
+
+async function refreshPrices() {
+  setStatus('loading', '가격 불러오는 중...');
+  const assets = state.assets.filter(a => a.active);
+
+  // 1. CoinGecko - 크립토 실시간
+  const cryptos = assets.filter(a => a.type === 'crypto' && a.code);
+  if (cryptos.length) {
+    try {
+      const ids = cryptos.map(a => a.code).join(',');
+      const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=krw`, {signal: AbortSignal.timeout(8000)});
+      const data = await res.json();
+      cryptos.forEach(a => { if (data[a.code]) state.prices[a.id] = data[a.code].krw; });
+    } catch(e) { console.warn('CoinGecko 오류', e); }
+  }
+
+  // 2. 국내 주식/ETF - 1시간 캐시
+  const stocks = assets.filter(a => (a.type === 'stock' || a.type === 'etf') && a.code);
+  const now = Date.now();
+  const CACHE_MS = 60 * 60 * 1000;
+  let cacheTime = null;
+  try { cacheTime = JSON.parse(localStorage.getItem('pf_stock_meta') || '{}').ts; } catch(e) {}
+  const cacheValid = cacheTime && (now - cacheTime) < CACHE_MS;
+
+  if (cacheValid) {
+    stocks.forEach(a => {
+      try {
+        const c = JSON.parse(localStorage.getItem('pf_pc_' + a.id));
+        if (c?.p) state.prices[a.id] = c.p;
+      } catch(e) {}
+    });
+    const d = new Date(cacheTime);
+    document.getElementById('stock-cache-info').textContent = `주식 ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')} 캐시`;
+  } else {
+    // 가격 조회
+    const PROXIES = [
+      c => `https://corsproxy.io/?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+c+'?interval=1d&range=1d')}`,
+      c => `https://api.allorigins.win/raw?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+c+'?interval=1d&range=1d')}`,
+      c => `https://corsproxy.io/?url=${encodeURIComponent('https://query2.finance.yahoo.com/v8/finance/chart/'+c+'?interval=1d&range=1d')}`,
+    ];
+
+    const fetchPrice = async (code) => {
+      // 1순위: stooq (CORS 없음)
+      try {
+        const res = await fetch(`https://stooq.com/q/l/?s=${code.toLowerCase()}&f=sd2t2ohlcv&h&e=json`, {signal: AbortSignal.timeout(6000)});
+        if (res.ok) {
+          const data = await res.json();
+          const p = data?.symbols?.[0]?.close;
+          if (p && p >= 1000) return Math.round(p);
+        }
+      } catch(e) {}
+
+      // 2순위: 야후 파이낸스 프록시
+      for (const proxyFn of PROXIES) {
+        try {
+          const res = await fetch(proxyFn(code), {signal: AbortSignal.timeout(8000)});
+          if (!res.ok) continue;
+          const data = await res.json();
+          const p = data?.chart?.result?.[0]?.meta?.regularMarketPrice;
+          if (p && p >= 1000) return Math.round(p);
+        } catch(e) {}
+      }
+      return null;
+    };
+
+    let fetched = 0;
+    for (const asset of stocks) {
+      let price = await fetchPrice(asset.code);
+      if (!price && asset.code.endsWith('.KS')) price = await fetchPrice(asset.code.replace('.KS','.KQ'));
+      if (!price && asset.code.endsWith('.KQ')) price = await fetchPrice(asset.code.replace('.KQ','.KS'));
+
+      if (price) {
+        state.prices[asset.id] = price;
+        localStorage.setItem('pf_pc_' + asset.id, JSON.stringify({p: price, ts: now}));
+        fetched++;
+      } else {
+        try {
+          const c = JSON.parse(localStorage.getItem('pf_pc_' + asset.id));
+          if (c?.p) state.prices[asset.id] = c.p;
+        } catch(e) {}
+      }
+    }
+
+    if (fetched > 0) {
+      localStorage.setItem('pf_stock_meta', JSON.stringify({ts: now}));
+      const d = new Date(now);
+      document.getElementById('stock-cache-info').textContent = `주식 ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')} 업데이트`;
+    }
+  }
+
+  // 3. 수동
+  assets.filter(a => a.type === 'other').forEach(a => {
+    if (a.manualPrice) state.prices[a.id] = a.manualPrice;
+  });
+
+  saveState();
+  setStatus('ok', '업데이트 완료');
+  const d = new Date();
+  document.getElementById('last-updated').textContent = `· ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')} 기준`;
+  renderDashboard();
+  fetchMarketCaps();
+  fetchMarketData(); // 마켓 티커 업데이트
+  fetchGjPrice();    // 금정푸르지오 분양권전매 갱신
+}
+
+
+function setStatus(type, msg) {
+  const dot = document.getElementById('status-dot');
+  dot.className = 'status-dot' + (type==='loading'?' loading':type==='error'?' error':'');
+  document.getElementById('status-text').textContent = msg;
+}
+
+function getPrice(asset) {
+  return state.prices[asset.id] || 0;
+}
+
+function getCurrentValue(asset) {
+  if (asset.type === 'other') return asset.manualPrice || 0;
+  const price = getPrice(asset);
+  if (!price) return null; // null = 가격 없음 (계산 제외)
+  return price * asset.qty;
+}
+
+function getInvested(asset) {
+  const trades = state.trades.filter(t => t.ticker === asset.id);
+  let cost = 0, qty = 0;
+  trades.forEach(t => {
+    if (t.type === 'buy') { cost += t.amount; qty += t.qty; }
+    if (t.type === 'sell') { cost -= (cost/qty||0)*t.qty; qty -= t.qty; }
+  });
+  return cost;
+}
+
+// ==================== DASHBOARD ====================
+function renderDashboard() {
+  renderKPI();
+  renderHoldings();
+  renderPie();
+  renderTrend();
+}
+
+function renderKPI() {
+  const active = state.assets.filter(a => a.active);
+  const totalValue = active.reduce((s,a) => {
+    const v = getCurrentValue(a);
+    return s + (v !== null ? v : 0);
+  }, 0);
+  const totalInvested = active.reduce((s,a) => {
+    const v = getCurrentValue(a);
+    return s + (v !== null ? getInvested(a) : 0); // 가격 없는 종목은 원금도 제외
+  }, 0);
+  const todayStr2 = today();
+  const totalLiabilities = (state.liabilities||[]).reduce((s,l) => {
+    const liabStart = l.date || '2000-01-01';
+    const liabRepay = l.repayDate || '9999-12-31';
+    const active = liabStart <= todayStr2 && liabRepay > todayStr2;
+    return s + (active ? (l.amount||0) : 0);
+  }, 0);
+  const netAsset = totalValue - totalLiabilities;
+  const profit = totalValue - totalInvested;
+  const roi = totalInvested ? (profit/totalInvested*100) : 0;
+  let maxHistory = 0, athDate = null;
+  if (state.history.length) {
+    state.history.forEach(h => { if (h[1] > maxHistory) { maxHistory = h[1]; athDate = h[0]; } });
+  }
+  let athDaysHtml = '';
+  if (athDate) {
+    const diffMs = new Date(today()) - new Date(athDate);
+    const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+    athDaysHtml = diffDays === 0
+      ? `<div class="kpi-sub up">오늘이 역대 최고!</div>`
+      : `<div class="kpi-sub" style="color:var(--text3);">${diffDays}일 전 (${athDate})</div>`;
+  }
+
+  document.getElementById('kpi-grid').innerHTML = `
+    <div class="kpi-card"><div class="kpi-label">총 평가액</div><div class="kpi-value mono">${fmt(totalValue)}</div><div class="kpi-sub">원</div></div>
+    <div class="kpi-card"><div class="kpi-label">순자산</div><div class="kpi-value mono ${netAsset>=0?'up':'down'}">${fmt(netAsset)}</div><div class="kpi-sub" style="color:var(--down);">${totalLiabilities?'부채 -'+fmt(totalLiabilities)+'원':'부채 없음'}</div></div>
+    <div class="kpi-card"><div class="kpi-label">총 매입원금</div><div class="kpi-value mono">${fmt(totalInvested)}</div><div class="kpi-sub">원</div></div>
+    <div class="kpi-card"><div class="kpi-label">평가 손익</div><div class="kpi-value mono ${profit>=0?'up':'down'}">${profit>=0?'+':''}${fmt(profit)}</div><div class="kpi-sub">원</div></div>
+    <div class="kpi-card"><div class="kpi-label">수익률</div><div class="kpi-value ${roi>=0?'up':'down'}">${roi>=0?'+':''}${roi.toFixed(1)}%</div></div>
+    <div class="kpi-card"><div class="kpi-label">역대 최고</div><div class="kpi-value mono up">${fmt(maxHistory)}</div><div class="kpi-sub">원</div></div>
+    <div class="kpi-card"><div class="kpi-label">ATH 경과일</div><div class="kpi-value mono" style="font-size:18px;">${athDate ? (Math.round((new Date(today())-new Date(athDate))/(1000*60*60*24))===0?'🏆 TODAY':Math.round((new Date(today())-new Date(athDate))/(1000*60*60*24))+'일') : '-'}</div>${athDaysHtml}</div>
+  `;
+}
+
+function renderHoldings() {
+  const active = state.assets.filter(a => a.active);
+  const rows = active.map(a => {
+    const price = getPrice(a);
+    const value = getCurrentValue(a);
+    const invested = getInvested(a);
+    const hasPrice = value !== null;
+    const profit = (hasPrice && invested) ? value - invested : null;
+    const roi = (hasPrice && invested) ? (profit/invested*100) : null;
+    const priceDisplay = a.type==='other' ? '-'
+      : hasPrice
+        ? `<span style="cursor:pointer;" onclick="editPrice('${a.id}')" title="클릭하여 수정">₩${price.toLocaleString()} ✎</span>`
+        : `<span style="color:var(--text3);font-size:11px;cursor:pointer;" onclick="editPrice('${a.id}')">가격 조회 중 ✎</span>`;
+
+    // 밸류 컬럼
+    let valDisplay = '';
+    if (a.type === 'crypto' && a.id === 'btc') {
+      const mc = state.mktcap?.['btc_usd'];
+      valDisplay = mc
+        ? `<span style="font-size:12px;color:var(--accent2);" class="mono">$${fmtMktcap(mc)}</span>`
+        : '<span style="color:var(--text3);font-size:11px;">-</span>';
+    } else if (a.type === 'stock' || a.type === 'etf') {
+      const per = getForwardPER(a.id);
+      valDisplay = per
+        ? `<span class="mono" style="font-size:12px;color:${per<15?'var(--up)':per<25?'var(--gold)':'var(--down)'};">${per.toFixed(1)}x</span>`
+        : '<span style="color:var(--text3);font-size:11px;">-</span>';
+    }
+
+    return `<tr>
+      <td><strong>${a.name}</strong></td>
+      <td><span class="badge badge-${a.type}">${typeName(a.type)}</span></td>
+      <td class="mono">${a.qty}</td>
+      <td class="mono">${priceDisplay}</td>
+      <td class="mono">${hasPrice ? fmt(value) : '-'}</td>
+      <td class="mono">${invested ? fmt(invested) : '-'}</td>
+      <td class="mono ${profit!==null?(profit>=0?'up':'down'):''}">${profit!==null?(profit>=0?'+':'')+fmt(profit):'-'}</td>
+      <td class="${roi!==null?(roi>=0?'up':'down'):''}">${roi!==null?(roi>=0?'+':'')+roi.toFixed(1)+'%':'-'}</td>
+      <td>${valDisplay}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('holdings-tbody').innerHTML = rows || `<tr><td colspan="9" class="empty">보유 종목이 없습니다.</td></tr>`;
+}
+
+let _editPriceId = null;
+function editPrice(assetId) {
+  if (isReadOnly) return;
+  const asset = state.assets.find(a => a.id === assetId);
+  if (!asset) return;
+  _editPriceId = assetId;
+  document.getElementById('edit-price-title').textContent = asset.name + ' 현재가 수정';
+  document.getElementById('edit-price-desc').textContent = '직접 현재가를 입력하면 캐시에 저장돼요. 다음 1시간 캐시 갱신 전까지 유지됩니다.';
+  const current = state.prices[assetId] || '';
+  document.getElementById('edit-price-input').value = current;
+  document.getElementById('edit-price-modal').classList.add('open');
+  setTimeout(() => document.getElementById('edit-price-input').focus(), 100);
+}
+function confirmEditPrice() {
+  const val = document.getElementById('edit-price-input').value;
+  const price = parseInt(String(val).replace(/,/g,''));
+  if (!price || price < 100) { alert('올바른 가격을 입력해주세요.'); return; }
+  state.prices[_editPriceId] = price;
+  try { localStorage.setItem('pf_pc_' + _editPriceId, JSON.stringify({p: price, ts: Date.now(), manual: true})); } catch(e) {}
+  saveState();
+  closeModal('edit-price-modal');
+  renderDashboard();
+}
+
+
+function renderPie() {
+  const active = state.assets.filter(a => a.active);
+  const total = active.reduce((s,a) => {
+    const v = getCurrentValue(a);
+    return s + (v !== null ? v : 0);
+  }, 0);
+  if (!total) return;
+
+  const cx=80, cy=80, r=72, inner=44;
+  let angle = -Math.PI/2;
+  let paths = '';
+  let legendHtml = '';
+
+  active.forEach((a,i) => {
+    const val = getCurrentValue(a);
+    if (val === null) return; // 가격 없는 종목 파이차트 제외
+    const pct = val/total;
+    const sweep = pct * 2 * Math.PI;
+    const x1=cx+r*Math.cos(angle), y1=cy+r*Math.sin(angle);
+    const a2=angle+sweep;
+    const x2=cx+r*Math.cos(a2), y2=cy+r*Math.sin(a2);
+    const ix1=cx+inner*Math.cos(angle), iy1=cy+inner*Math.sin(angle);
+    const ix2=cx+inner*Math.cos(a2), iy2=cy+inner*Math.sin(a2);
+    const large=sweep>Math.PI?1:0;
+    const color=COLORS[i%COLORS.length];
+    const path=`M${ix1},${iy1} L${x1},${y1} A${r},${r} 0 ${large},1 ${x2},${y2} L${ix2},${iy2} A${inner},${inner} 0 ${large},0 ${ix1},${iy1} Z`;
+    paths+=`<path d="${path}" fill="${color}" opacity="0.9" stroke="#0a0a0f" stroke-width="1.5" style="cursor:pointer;transition:opacity 0.15s;" onmouseover="this.style.opacity=1;showTip(event,'${a.name}',${val},${(pct*100).toFixed(1)})" onmouseout="this.style.opacity=0.9;hideTip()"/>`;
+    legendHtml+=`<div class="pl-item"><div class="pl-dot" style="background:${color};"></div><span class="pl-name">${a.name}</span><span class="pl-pct">${(pct*100).toFixed(1)}%</span></div>`;
+    angle=a2;
+  });
+
+  document.getElementById('pie-svg').innerHTML = paths;
+  document.getElementById('pie-center-val').textContent = fmt(total);
+  document.getElementById('pie-legend').innerHTML = legendHtml;
+}
+
+function renderTrend() {
+  // Chart.js 로딩 확인
+  if (typeof Chart === 'undefined') {
+    setTimeout(renderTrend, 300);
+    return;
+  }
+  const history = getFilteredHistory();
+  if (!history.length) return;
+  const labels = history.map(h=>h[0]);
+  const isValue = chartMode==='value';
+  // 날짜별 부채 계산: 시작일 이후 & 상환일 이전인 부채만 합산
+  const getLiabAtDate = (dateStr) => {
+    return (state.liabilities||[]).reduce((s,l) => {
+      const liabStart = l.date || '2000-01-01';
+      const liabRepay = l.repayDate || '9999-12-31';
+      const active = liabStart <= dateStr && liabRepay > dateStr;
+      return s + (active ? (l.amount||0) : 0);
+    }, 0);
+  };
+  // 파란선: 순자산(총평가액 - 해당시점 부채), 빨간점선: 원금
+  const mainData = isValue ? history.map(h=>+((h[1]-getLiabAtDate(h[0]))/1e8).toFixed(3)) : history.map(h=>h[3]);
+  const subData = isValue ? history.map(h=>+(h[2]/1e8).toFixed(3)) : null;
+
+  if (trendChart) { trendChart.destroy(); trendChart = null; }
+  const ctx = document.getElementById('trend-chart').getContext('2d');
+  const grad = ctx.createLinearGradient(0,0,0,220);
+  grad.addColorStop(0,'rgba(124,111,255,0.25)');
+  grad.addColorStop(1,'rgba(124,111,255,0)');
+
+  const datasets = [{
+    label:'순자산', data:mainData,
+    borderColor:'#7c6fff', borderWidth:2,
+    pointRadius:0, pointHoverRadius:4,
+    fill:true, backgroundColor:grad, tension:0.3,
+    pointHoverBackgroundColor:'#7c6fff'
+  }];
+
+  if (isValue && subData) datasets.push({
+    label:'원금', data:subData,
+    borderColor:'#3dd68c', borderWidth:1.5,
+    borderDash:[5,4], pointRadius:0, fill:false, tension:0,
+    pointHoverRadius:3, pointHoverBackgroundColor:'#3dd68c'
+  });
+
+  // 총평가액 보조 라인 (연보라 점선)
+  if (isValue) {
+    const totalValueData = history.map(h=>+(h[1]/1e8).toFixed(3));
+    datasets.push({
+      label:'총평가액', data:totalValueData,
+      borderColor:'rgba(169,159,255,0.55)', borderWidth:1.5,
+      borderDash:[4,6], pointRadius:0, fill:false, tension:0.3,
+      pointHoverRadius:3, pointHoverBackgroundColor:'rgba(169,159,255,0.8)',
+      spanGaps: true,
+    });
+  }
+
+  // 부채 보조 라인 (빨간 점선)
+  if (isValue && (state.liabilities||[]).length) {
+    const liabData = history.map(h => {
+      const liab = getLiabAtDate(h[0]);
+      return liab > 0 ? +(liab/1e8).toFixed(3) : null;
+    });
+    if (liabData.some(v => v !== null)) {
+      datasets.push({
+        label:'부채', data:liabData,
+        borderColor:'rgba(255,107,107,0.7)', borderWidth:1.5,
+        borderDash:[3,5], pointRadius:0, fill:false, tension:0,
+        pointHoverRadius:3, pointHoverBackgroundColor:'rgba(255,107,107,0.9)',
+        spanGaps: false,
+      });
+    }
+  }
+
+  // 누적 근로소득 라인
+  if (isValue && state.income && state.income.length) {
+    const incomeData = labels.map(d => {
+      const v = getCumulativeIncome(d);
+      return v !== null ? +(v/1e8).toFixed(3) : null;
+    });
+    if (incomeData.some(v => v !== null)) {
+      datasets.push({
+        label:'누적근로소득', data:incomeData,
+        borderColor:'#f5c842', borderWidth:1.5,
+        borderDash:[3,5], pointRadius:0, fill:false, tension:0.2,
+        pointHoverRadius:3, pointHoverBackgroundColor:'#f5c842',
+        spanGaps: true,
+      });
+    }
+  }
+
+  if (!isValue) datasets.push({
+    label:'기준', data:history.map(()=>0),
+    borderColor:'rgba(255,255,255,0.1)', borderWidth:1,
+    borderDash:[3,3], pointRadius:0, fill:false, tension:0
+  });
+
+  trendChart = new Chart(ctx, {
+    type:'line', data:{labels, datasets},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          enabled:false,
+          external(ctx2) {
+            const tip = document.getElementById('tooltip');
+            if (ctx2.tooltip.opacity===0){tip.classList.remove('show');return;}
+            const d = ctx2.tooltip.dataPoints;
+            const date = d[0].label;
+            const idx = labels.indexOf(date);
+            const row = history[idx];
+            const roi = row[3];
+            const rc = roi>=0?'var(--up)':'var(--down)';
+            const incomeVal = getCumulativeIncome(date);
+            const incomeRow = incomeVal !== null
+              ? `<div class="tt-row"><span style="color:#f5c842">누적근로소득</span><strong style="color:#f5c842">${fmt(incomeVal)}</strong></div>`
+              : '';
+            const liabAmt = (state.liabilities||[]).reduce((s,l) => {
+              const liabStart = l.date || '2000-01-01';
+              const liabRepay = l.repayDate || '9999-12-31';
+              const active = liabStart <= date && liabRepay > date;
+              return s + (active ? (l.amount||0) : 0);
+            }, 0);
+            const netAsset = row[1] - liabAmt;
+            tip.innerHTML=`<div class="tt-date">${date}</div>
+              <div class="tt-row"><span style="color:#7c6fff">순자산</span><strong style="color:#7c6fff">${fmt(netAsset)}</strong></div>
+              <div class="tt-row"><span style="color:var(--text2)">총평가액</span><strong>${fmt(row[1])}</strong></div>
+              ${liabAmt?`<div class="tt-row"><span style="color:var(--down)">부채</span><strong style="color:var(--down)">-${fmt(liabAmt)}</strong></div>`:''}
+              <div class="tt-row"><span style="color:var(--text2)">원금</span><strong>${fmt(row[2])}</strong></div>
+              <div class="tt-row"><span style="color:var(--text2)">수익률</span><strong style="color:${rc}">${roi>=0?'+':''}${roi}%</strong></div>
+              ${incomeRow}`;
+            const rect = document.getElementById('trend-chart').getBoundingClientRect();
+            let x = rect.left + ctx2.tooltip.caretX + 14;
+            if (x + 180 > window.innerWidth) x = rect.left + ctx2.tooltip.caretX - 185;
+            tip.style.left = x+'px';
+            tip.style.top = (rect.top + ctx2.tooltip.caretY - 20)+'px';
+            tip.classList.add('show');
+          }
+        }
+      },
+      scales:{
+        x:{grid:{display:false,color:'var(--border)'},ticks:{maxTicksLimit:7,font:{size:10},color:'#55556a',maxRotation:0}},
+        y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{font:{size:10},color:'#55556a',callback:v=>isValue?v.toFixed(1)+'억':v+'%'},border:{display:false}}
+      }
+    }
+  });
+}
+
+function getFilteredHistory() {
+  const hist = [...state.history];
+  if (!hist.length) return hist;
+  const last = new Date(hist[hist.length-1][0]);
+  if (chartRange==='all') return hist;
+  const cutoff = new Date(last);
+  if (chartRange==='1y') cutoff.setFullYear(cutoff.getFullYear()-1);
+  if (chartRange==='6m') cutoff.setMonth(cutoff.getMonth()-6);
+  if (chartRange==='3m') cutoff.setMonth(cutoff.getMonth()-3);
+  return hist.filter(h=>new Date(h[0])>=cutoff);
+}
+
+function setRange(range, el) {
+  chartRange = range;
+  document.querySelectorAll('.chart-filters .cf-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderTrend();
+}
+
+function setMode(mode, el) {
+  chartMode = mode;
+  document.querySelectorAll('#mode-value,#mode-roi').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderTrend();
+}
+
+// ==================== TRADES ====================
+function setTradeType(t, el) {
+  tradeType = t;
+  document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('t-qty-wrap').style.display = t==='div'?'none':'block';
+  document.getElementById('t-price-wrap').style.display = t==='div'?'none':'block';
+  document.getElementById('t-amount-wrap').style.display = t==='div'?'block':'none';
+  updatePreview();
+}
+
+function updatePreview() {
+  const ticker = document.getElementById('t-ticker').value;
+  const asset = state.assets.find(a=>a.id===ticker);
+  const name = asset?.name || ticker;
+  const prev = document.getElementById('t-preview');
+  if (tradeType==='div') {
+    const amt = parseInt(document.getElementById('t-amount').value)||0;
+    prev.innerHTML = amt ? `<strong>${name}</strong> 배당/이자 수령 <strong>+${amt.toLocaleString()}원</strong>` : '수령 금액을 입력하세요.';
+    return;
+  }
+  const qty = parseFloat(document.getElementById('t-qty').value)||0;
+  const price = parseInt(document.getElementById('t-price').value)||0;
+  if (!qty||!price) { prev.textContent='종목·수량·단가를 입력하면 미리보기가 표시됩니다.'; return; }
+  const total = qty*price;
+  const label = tradeType==='buy'?'매수':'매도';
+  prev.innerHTML=`<strong>${name}</strong> ${label} <strong>${qty}</strong>주 × <strong>${price.toLocaleString()}원</strong> = <strong>${total.toLocaleString()}원</strong>`;
+}
+
+function addTrade() {
+  if (isReadOnly) return;
+  const ticker = document.getElementById('t-ticker').value;
+  const date = document.getElementById('t-date').value || today();
+  const memo = document.getElementById('t-memo').value;
+  const asset = state.assets.find(a=>a.id===ticker);
+  let trade = {id:Date.now(), ticker, type:tradeType, date, memo};
+
+  if (tradeType==='div') {
+    const amt = parseInt(document.getElementById('t-amount').value)||0;
+    if (!amt) { alert('수령 금액을 입력해주세요.'); return; }
+    trade.amount = amt;
+  } else {
+    const qty = parseFloat(document.getElementById('t-qty').value)||0;
+    const price = parseInt(document.getElementById('t-price').value)||0;
+    if (!qty||!price) { alert('수량과 단가를 입력해주세요.'); return; }
+    trade.qty = qty; trade.price = price; trade.amount = qty*price;
+
+    // 보유수량 업데이트
+    if (asset) {
+      if (tradeType==='buy') asset.qty = (asset.qty||0)+qty;
+      if (tradeType==='sell') {
+        asset.qty = Math.max(0,(asset.qty||0)-qty);
+        if (asset.qty===0) {
+          asset.active = false;
+          alert(`${asset.name} 전량 매도 완료. 종목이 비활성화됩니다.`);
+        }
+      }
+    }
+  }
+
+  state.trades.unshift(trade);
+  saveState();
+  document.getElementById('t-qty').value='';
+  document.getElementById('t-price').value='';
+  document.getElementById('t-amount').value='';
+  document.getElementById('t-memo').value='';
+  document.getElementById('t-preview').textContent='종목·수량·단가를 입력하면 미리보기가 표시됩니다.';
+  renderTradeList();
+  renderDashboard();
+  renderAssetList();
+  upsertTodaySnapshot(); // 거래 즉시 자산 추이 그래프에 반영
+}
+
+function setTradeFilter(f, el) {
+  tradeFilter = f;
+  document.querySelectorAll('#page-trades .cf-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderTradeList();
+}
+
+function renderTradeList() {
+  const trades = tradeFilter==='all' ? state.trades : state.trades.filter(t=>t.type===tradeFilter);
+  const el = document.getElementById('trade-list');
+  if (!trades.length) { el.innerHTML='<div class="empty">거래 내역이 없습니다.</div>'; return; }
+  const typeLabel = {buy:'매수',sell:'매도',div:'배당'};
+  const typeCls = {buy:'up',sell:'down',div:'accent'};
+  el.innerHTML = trades.map(t => {
+    const asset = state.assets.find(a=>a.id===t.ticker);
+    const name = asset?.name||t.ticker;
+    const detail = t.type==='div'?'배당/이자 수령':`${t.qty}주 × ${t.price?.toLocaleString()}원`;
+    const amtCls = t.type==='buy'?'down':t.type==='sell'?'up':'up';
+    const prefix = t.type==='buy'?'-':'+';
+    return `<div class="trade-item">
+      <span class="badge badge-${t.type==='buy'?'stock':t.type==='sell'?'etf':'crypto'}" style="font-size:10px;">${typeLabel[t.type]}</span>
+      <span class="trade-name">${name}</span>
+      <span class="trade-detail">${detail}${t.memo?` · ${t.memo}`:''}</span>
+      <span class="trade-amt ${amtCls}">${prefix}${t.amount?.toLocaleString()}원</span>
+      <span class="trade-date">${t.date}</span>
+      ${!isReadOnly?`<button class="del-btn" onclick="deleteTrade(${t.id})">✕</button>`:''}
+    </div>`;
+  }).join('');
+}
+
+function deleteTrade(id) {
+  if (!confirm('이 거래를 삭제할까요?')) return;
+  const trade = state.trades.find(t => t.id === id);
+  if (trade && trade.type !== 'div') {
+    const asset = state.assets.find(a => a.id === trade.ticker);
+    if (asset) {
+      if (trade.type === 'buy') {
+        asset.qty = Math.max(0, (asset.qty || 0) - trade.qty);
+      } else if (trade.type === 'sell') {
+        asset.qty = (asset.qty || 0) + trade.qty;
+        // 매도 삭제로 수량이 복구되면 비활성화된 종목도 다시 활성화
+        if (!asset.active && asset.qty > 0) asset.active = true;
+      }
+    }
+  }
+  state.trades = state.trades.filter(t => t.id !== id);
+  saveState();
+  renderTradeList();
+  renderDashboard();
+  renderAssetList();
+  upsertTodaySnapshot(); // 거래 삭제 시에도 자산 추이 그래프에 즉시 반영
+}
+
+// ==================== ASSETS ====================
+function onAssetTypeChange() {
+  const type = document.getElementById('a-type').value;
+  const codeWrap = document.getElementById('a-code-wrap');
+  const manualWrap = document.getElementById('a-manual-wrap');
+  const codeLabel = document.getElementById('a-code-label');
+  if (type==='other') {
+    codeWrap.style.display='none';
+    manualWrap.style.display='block';
+  } else {
+    codeWrap.style.display='block';
+    manualWrap.style.display='none';
+    codeLabel.textContent = type==='crypto'?'CoinGecko ID (예: bitcoin, ethereum)':'야후 파이낸스 코드 (예: 005930.KS)';
+    document.getElementById('a-code').placeholder = type==='crypto'?'bitcoin':'005930.KS';
+  }
+}
+
+function addAsset() {
+  if (isReadOnly) return;
+  const name = document.getElementById('a-name').value.trim();
+  const type = document.getElementById('a-type').value;
+  const code = document.getElementById('a-code').value.trim();
+  const manualPrice = parseInt(document.getElementById('a-manual-price').value)||null;
+  if (!name) { alert('종목명을 입력해주세요.'); return; }
+
+  const id = 'asset_' + Date.now();
+  const asset = {id, name, type, code:type==='other'?null:code, qty:0, manualPrice, active:true};
+  state.assets.push(asset);
+  saveState();
+  populateTickerSelect();
+  renderAssetList();
+  renderManualPriceList();
+  document.getElementById('a-name').value='';
+  document.getElementById('a-code').value='';
+  document.getElementById('a-manual-price').value='';
+  alert(`${name} 종목이 추가됐어요! 거래 입력에서 매수 내역을 추가해주세요.`);
+  refreshPrices();
+}
+
+function toggleAsset(id) {
+  if (isReadOnly) return;
+  const asset = state.assets.find(a=>a.id===id);
+  if (!asset) return;
+  const modal = document.getElementById('delete-asset-modal');
+  document.getElementById('delete-modal-title').textContent = asset.active?'종목 비활성화':'종목 활성화';
+  document.getElementById('delete-modal-body').textContent = asset.active
+    ? `${asset.name}을(를) 비활성화하면 대시보드에서 제외됩니다. 거래 내역은 유지됩니다.`
+    : `${asset.name}을(를) 다시 활성화합니다.`;
+  document.getElementById('delete-confirm-btn').onclick = () => {
+    asset.active = !asset.active;
+    saveState();
+    renderAssetList();
+    renderDashboard();
+    closeModal('delete-asset-modal');
+  };
+  modal.classList.add('open');
+}
+
+function renderAssetList() {
+  const el = document.getElementById('asset-list');
+  if (!state.assets.length) {
+    el.innerHTML='<tr><td colspan="6" class="empty">종목이 없습니다.</td></tr>';
+    return;
+  }
+  el.innerHTML = state.assets.map(a => `
+    <tr style="${!a.active?'opacity:0.4;':''}">
+      <td><strong>${a.name}</strong></td>
+      <td><span class="badge badge-${a.type}">${typeName(a.type)}</span></td>
+      <td style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text3);">${a.code||'수동입력'}</td>
+      <td style="font-family:'DM Mono',monospace;">${a.qty}</td>
+      <td><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:${a.active?'var(--up-bg)':'rgba(255,255,255,0.04)'};color:${a.active?'var(--up)':'var(--text3)'};">${a.active?'활성':'비활성'}</span></td>
+      <td>${!isReadOnly?`<button class="del-btn" onclick="toggleAsset('${a.id}')" style="font-size:16px;" title="${a.active?'비활성화':'활성화'}">${a.active?'✕':'↺'}</button>`:''}</td>
+    </tr>
+  `).join('');
+}
+
+function populateTickerSelect() {
+  const sel = document.getElementById('t-ticker');
+  const active = state.assets.filter(a=>a.active);
+  sel.innerHTML = active.map(a=>`<option value="${a.id}">${a.name}</option>`).join('');
+}
+
+// ==================== MANUAL PRICE ====================
+function renderManualPriceList() {
+  const manuals = state.assets.filter(a=>a.type==='other'&&a.active);
+  const el = document.getElementById('manual-price-list');
+  if (!manuals.length) { el.innerHTML='<div class="empty" style="padding:1rem;">수동 입력 종목이 없습니다.</div>'; return; }
+  el.innerHTML = manuals.map(a=>`
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <span style="flex:1;font-size:13px;">${a.name}</span>
+      <input type="number" value="${a.manualPrice||0}" style="width:140px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg3);color:var(--text);"
+        onchange="updateManualPrice('${a.id}',this.value)">
+      <span style="font-size:12px;color:var(--text3);">원</span>
+    </div>
+  `).join('');
+}
+
+function updateManualPrice(id, val) {
+  const asset = state.assets.find(a=>a.id===id);
+  if (asset) { asset.manualPrice = parseInt(val)||0; saveState(); renderDashboard(); }
+}
+
+// ==================== LIABILITIES ====================
+function addLiability() {
+  if (isReadOnly) return;
+  const name = document.getElementById('liab-name').value.trim();
+  const amount = parseInt(document.getElementById('liab-amount').value) || 0;
+  const date = document.getElementById('liab-date').value || today();
+  if (!name) { alert('항목명을 입력해주세요.'); return; }
+  if (!amount) { alert('금액을 입력해주세요.'); return; }
+  if (!state.liabilities) state.liabilities = [];
+  const repayDate = document.getElementById('liab-repay-date').value || null;
+  state.liabilities.push({ id: Date.now(), name, amount, date, repayDate });
+  document.getElementById('liab-name').value = '';
+  document.getElementById('liab-amount').value = '';
+  document.getElementById('liab-date').value = '';
+  document.getElementById('liab-repay-date').value = '';
+  saveState();
+  renderLiabilityList();
+  renderDashboard();
+}
+
+function deleteLiability(id) {
+  if (!confirm('이 항목을 삭제할까요?')) return;
+  state.liabilities = (state.liabilities||[]).filter(l => l.id !== id);
+  saveState();
+  renderLiabilityList();
+  renderDashboard();
+}
+
+// ==================== REPAY MODAL ====================
+let _repayId = null;
+
+function openRepayModal(id) {
+  if (isReadOnly) return;
+  const liab = (state.liabilities||[]).find(l => l.id === id);
+  if (!liab) return;
+  _repayId = id;
+  document.getElementById('repay-modal-title').textContent = liab.name + ' 상환';
+  document.getElementById('repay-modal-desc').textContent = '현재 잔액: ' + fmt(liab.amount) + '원';
+  document.getElementById('repay-amount').value = '';
+  document.getElementById('repay-date').value = today();
+  document.getElementById('repay-preview').textContent = '상환 금액을 입력하면 미리보기가 표시됩니다.';
+  document.getElementById('repay-amount').oninput = updateRepayPreview;
+  document.getElementById('repay-modal').classList.add('open');
+  setTimeout(() => document.getElementById('repay-amount').focus(), 100);
+}
+
+function updateRepayPreview() {
+  const liab = (state.liabilities||[]).find(l => l.id === _repayId);
+  if (!liab) return;
+  const repayAmt = parseInt(document.getElementById('repay-amount').value) || 0;
+  const prev = document.getElementById('repay-preview');
+  if (!repayAmt) { prev.textContent = '상환 금액을 입력하면 미리보기가 표시됩니다.'; return; }
+  const remaining = liab.amount - repayAmt;
+  if (repayAmt > liab.amount) {
+    prev.innerHTML = '<span style="color:var(--down);">⚠ 상환 금액이 잔액을 초과합니다.</span>';
+    return;
+  }
+  if (remaining === 0) {
+    prev.innerHTML = `<span style="color:var(--up);">✅ 전액 상환 → 잔액 0원 (상환완료 처리)</span>`;
+  } else {
+    prev.innerHTML = `<span style="color:var(--text2);">상환 후 잔액: </span><strong style="color:var(--down);">${fmt(remaining)}원</strong>`;
+  }
+}
+
+function confirmRepay() {
+  if (!_repayId) return;
+  const liab = (state.liabilities||[]).find(l => l.id === _repayId);
+  if (!liab) return;
+  const repayAmt = parseInt(document.getElementById('repay-amount').value) || 0;
+  const repayDate = document.getElementById('repay-date').value || today();
+  if (!repayAmt || repayAmt <= 0) { alert('상환 금액을 입력해주세요.'); return; }
+  if (repayAmt > liab.amount) { alert('상환 금액이 잔액을 초과합니다.'); return; }
+
+  const remaining = liab.amount - repayAmt;
+
+  // 상환 이력 기록 (liab.repayHistory 배열)
+  if (!liab.repayHistory) liab.repayHistory = [];
+  liab.repayHistory.push({ date: repayDate, amount: repayAmt });
+
+  if (remaining === 0) {
+    // 전액 상환 → 상환일 설정하고 잔액 0
+    liab.repayDate = repayDate;
+    liab.amount = 0;
+    alert(`${liab.name} 전액 상환 완료!`);
+  } else {
+    // 부분 상환 → 잔액 업데이트
+    liab.amount = remaining;
+    alert(`${liab.name} ${fmt(repayAmt)}원 상환 완료! 잔액: ${fmt(remaining)}원`);
+  }
+
+  saveState();
+  closeModal('repay-modal');
+  renderLiabilityList();
+  renderDashboard();
+}
+
+
+
+function renderLiabilityList() {
+  const list = state.liabilities || [];
+  const el = document.getElementById('liability-list');
+  if (!el) return;
+  if (!list.length) {
+    el.innerHTML = '<div class="empty" style="padding:1rem;">등록된 부채가 없습니다.</div>';
+    document.getElementById('liab-total').style.display = 'none';
+    return;
+  }
+  const todayStr = today();
+  el.innerHTML = list.map(l => {
+    const isRepaid = l.repayDate && l.repayDate <= todayStr;
+    return `
+    <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg3);border-radius:8px;margin-bottom:6px;${isRepaid?'opacity:0.5;':''}">
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="font-size:13px;font-weight:500;">${l.name}</span>
+          ${isRepaid?'<span style="font-size:10px;padding:1px 7px;border-radius:10px;background:rgba(61,214,140,0.15);color:var(--up);">상환완료</span>':''}
+        </div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;">
+          시작: ${l.date||'미설정'}${l.repayDate?' · 상환: '+l.repayDate:''}
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <span class="mono" style="color:${isRepaid?'var(--text3)':'var(--down)'};font-size:13px;text-decoration:${isRepaid?'line-through':'none'};">-${fmt(l.amount)}원</span>
+        ${!isRepaid&&!isReadOnly?`<button class="btn btn-sm" onclick="openRepayModal(${l.id})" style="font-size:11px;padding:3px 10px;color:var(--up);border-color:var(--up);">상환</button>`:''}
+        ${!isReadOnly?`<button class="del-btn" onclick="deleteLiability(${l.id})">✕</button>`:''}
+      </div>
+    </div>`;
+  }).join('');
+  const total = list.reduce((s,l) => {
+    const isRepaid = l.repayDate && l.repayDate <= todayStr;
+    return s + (isRepaid ? 0 : (l.amount||0));
+  }, 0);
+  const totalAll = list.reduce((s,l)=>s+(l.amount||0),0);
+  const totalEl = document.getElementById('liab-total');
+  totalEl.style.display = 'block';
+  const repaidAmt = totalAll - total;
+  document.getElementById('liab-total-val').innerHTML =
+    (total > 0 ? '<span style="color:var(--down);">-' + fmt(total) + '원 현재 잔액</span>' : '<span style="color:var(--up);">0원</span>') +
+    (repaidAmt > 0 ? ' <span style="font-size:11px;color:var(--text3);">· 상환완료 ' + fmt(repaidAmt) + '원</span>' : '');
+}
+
+
+
+// ==================== VALUATION ====================
+async function fetchMarketCaps() {
+  if (isReadOnly) return;
+  if (!state.valuation) state.valuation = {};
+  if (!state.mktcap) state.mktcap = {};
+
+  // 국내 주식: 네이버 금융 API (종목코드 6자리)
+  const fetchNaverMktcap = async (code6) => {
+    const URLS = [
+      `https://corsproxy.io/?url=${encodeURIComponent('https://finance.naver.com/item/main.naver?code='+code6)}`,
+      `https://api.allorigins.win/raw?url=${encodeURIComponent('https://finance.naver.com/item/main.naver?code='+code6)}`,
+    ];
+    for (const url of URLS) {
+      try {
+        const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
+        if (!res.ok) continue;
+        const html = await res.text();
+        // 시가총액 파싱: "시가총액</em>" 이후 숫자+억원/조원 패턴
+        const match = html.match(/시가총액[^<]*<\/em>[\s\S]*?<strong[^>]*>([\d,]+)<\/strong>\s*<em>억원/);
+        if (match) {
+          const val = parseInt(match[1].replace(/,/g, '')) * 1e8; // 억원 → 원
+          if (val > 0) return val;
+        }
+      } catch(e) {}
+    }
+    return null;
+  };
+
+  // 해외 주식: 야후 파이낸스 (TSLA 등 해외 refTicker용)
+  const fetchYahooMktcap = async (ticker) => {
+    const URLS = [
+      `https://corsproxy.io/?url=${encodeURIComponent('https://query1.finance.yahoo.com/v7/finance/quote?symbols='+ticker)}`,
+      `https://api.allorigins.win/raw?url=${encodeURIComponent('https://query1.finance.yahoo.com/v7/finance/quote?symbols='+ticker)}`,
+      `https://corsproxy.io/?url=${encodeURIComponent('https://query2.finance.yahoo.com/v7/finance/quote?symbols='+ticker)}`,
+    ];
+    for (const url of URLS) {
+      try {
+        const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+        if (!res.ok) continue;
+        const data = await res.json();
+        const mc = data?.quoteResponse?.result?.[0]?.marketCap;
+        if (mc && mc > 0) return mc;
+      } catch(e) {}
+    }
+    return null;
+  };
+
+  for (const asset of stockAssets) {
+    const refTicker = state.valuation?.[asset.id]?.refTicker?.trim();
+    const isUSDRef = refTicker && !refTicker.endsWith('.KS') && !refTicker.endsWith('.KQ');
+
+    if (isUSDRef) {
+      // 해외 refTicker: USD 현재가 조회 (stooq → 야후 순)
+      const PRICE_URLS = [
+        `https://stooq.com/q/l/?s=${refTicker.toLowerCase()}&f=sd2t2ohlcv&h&e=json`,
+        `https://corsproxy.io/?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+refTicker+'?interval=1d&range=1d')}`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+refTicker+'?interval=1d&range=1d')}`,
+      ];
+      for (const url of PRICE_URLS) {
+        try {
+          const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+          if (!res.ok) continue;
+          const data = await res.json();
+          // stooq 형식
+          const p1 = data?.symbols?.[0]?.close;
+          if (p1 && p1 > 0) { state.mktcap['price_' + asset.id] = p1; break; }
+          // 야후 형식
+          const p2 = data?.chart?.result?.[0]?.meta?.regularMarketPrice;
+          if (p2 && p2 > 0) { state.mktcap['price_' + asset.id] = p2; break; }
+        } catch(e) {}
+      }
+    }
+  }
+
+  // BTC 시가총액 — CoinGecko (USD)
+  const btc = state.assets.find(a => a.id === 'btc' && a.active);
+  if (btc) {
+    try {
+      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true', { signal: AbortSignal.timeout(8000) });
+      const data = await res.json();
+      const mc = data?.bitcoin?.usd_market_cap;
+      if (mc) state.mktcap['btc_usd'] = mc;
+    } catch(e) {}
+  }
+
+  // USD/KRW 환율 조회 (해외 refTicker 환산용)
+  const hasUSDRef = state.assets.some(a => {
+    const ref = state.valuation?.[a.id]?.refTicker?.trim();
+    return ref && !ref.endsWith('.KS') && !ref.endsWith('.KQ');
+  });
+  if (hasUSDRef) {
+    try {
+      const RATE_URLS = [
+        `https://corsproxy.io/?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/USDKRW=X?interval=1d&range=1d')}`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/USDKRW=X?interval=1d&range=1d')}`,
+        `https://corsproxy.io/?url=${encodeURIComponent('https://query2.finance.yahoo.com/v8/finance/chart/USDKRW=X?interval=1d&range=1d')}`,
+      ];
+      for (const url of RATE_URLS) {
+        const res = await fetch(url, { signal: AbortSignal.timeout(6000) });
+        if (!res.ok) continue;
+        const data = await res.json();
+        const rate = data?.chart?.result?.[0]?.meta?.regularMarketPrice;
+        if (rate && rate > 100) { state.mktcap['usdkrw'] = rate; break; }
+      }
+    } catch(e) {}
+  }
+
+  saveState();
+  renderValuationPage();
+  renderHoldings();
+}
+
+function fmtMktcap(usd) {
+  if (!usd) return null;
+  if (usd >= 1e12) return (usd / 1e12).toFixed(2) + 'T';
+  if (usd >= 1e9)  return (usd / 1e9).toFixed(1) + 'B';
+  if (usd >= 1e6)  return (usd / 1e6).toFixed(1) + 'M';
+  return usd.toLocaleString();
+}
+
+function fmtMktcapKRW(krw) {
+  if (!krw) return null;
+  if (krw >= 1e12) return (krw / 1e12).toFixed(1) + '조';
+  if (krw >= 1e8)  return Math.round(krw / 1e8) + '억';
+  return Math.round(krw / 1e4) + '만';
+}
+
+// 시가총액 계산: 현재가 × 발행주식수
+// - 국내 종목: 원화 현재가(state.prices) × 발행주식수(만주)
+// - 해외 refTicker: state.prices의 refTicker 가격(원 환산) × 발행주식수(만주)
+//   단, refTicker 가격은 fetchMarketCaps에서 별도 조회해 state.prices에 저장
+function getCalcMktcap(assetId) {
+  const asset = state.assets.find(a => a.id === assetId);
+  if (!asset) return null;
+
+  const shares = state.valuation?.[assetId]?.shares; // 만주
+  if (!shares || shares <= 0) return null;
+
+  const refTicker = state.valuation?.[assetId]?.refTicker?.trim();
+  const isUSDRef = refTicker && !refTicker.endsWith('.KS') && !refTicker.endsWith('.KQ');
+
+  if (isUSDRef) {
+    // 해외 참조 종목 현재가(USD) × 환율 × 발행주식수
+    const usdPrice = state.mktcap?.['price_' + assetId]; // USD 현재가 캐시
+    const usdkrw = state.mktcap?.['usdkrw'] || 1350;
+    if (!usdPrice) return null;
+    return usdPrice * usdkrw * shares * 10000;
+  }
+
+  // 국내: 원화 현재가 × 발행주식수
+  const price = getPrice(asset);
+  if (!price) return null;
+  return price * shares * 10000;
+}
+
+function getForwardPER(assetId) {
+  const mktcap = getCalcMktcap(assetId);
+  const earnings = state.valuation?.[assetId]?.fwdEarnings; // 억원
+  if (!mktcap || !earnings || earnings <= 0) return null;
+  return mktcap / (earnings * 1e8);
+}
+
+function renderValuationPage() {
+  const stockAssets = state.assets.filter(a => a.active && (a.type === 'stock' || a.type === 'etf'));
+
+  // 입력 폼
+  const listEl = document.getElementById('valuation-list');
+  if (!listEl) return;
+  if (!stockAssets.length) {
+    listEl.innerHTML = '<div class="empty">주식·ETF 종목이 없습니다.</div>';
+  } else {
+    listEl.innerHTML = stockAssets.map(a => {
+      const earnings = state.valuation?.[a.id]?.fwdEarnings || '';
+      const shares   = state.valuation?.[a.id]?.shares || '';
+      const refTicker = state.valuation?.[a.id]?.refTicker || '';
+      const per = getForwardPER(a.id);
+      const mktcap = getCalcMktcap(a.id);
+      const perBadge = per
+        ? `<span style="font-size:11px;padding:2px 10px;border-radius:10px;background:${per<15?'rgba(61,214,140,0.12)':per<25?'rgba(245,200,66,0.1)':'rgba(255,107,107,0.1)'};color:${per<15?'var(--up)':per<25?'var(--gold)':'var(--down)'};">PER ${per.toFixed(1)}x</span>`
+        : `<span style="font-size:11px;color:var(--text3);">-</span>`;
+      const mktcapBadge = mktcap
+        ? `<span style="font-size:11px;color:var(--text2);">${fmtMktcapKRW(mktcap)}</span>`
+        : '';
+
+      const isUSDRef = refTicker && !refTicker.endsWith('.KS') && !refTicker.endsWith('.KQ');
+
+      // ETF: 참조 티커 입력
+      const refTickerRow = a.type === 'etf' ? `
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;padding:6px 10px;background:rgba(124,111,255,0.06);border-radius:6px;border:1px solid rgba(124,111,255,0.15);">
+          <span style="font-size:11px;color:var(--accent2);flex-shrink:0;">참조 티커</span>
+          <input type="text" value="${refTicker}" placeholder="예: TSLA"
+            style="flex:1;padding:4px 8px;font-size:12px;border:1px solid var(--border2);border-radius:4px;background:var(--bg3);color:var(--text);font-family:'DM Mono',monospace;"
+            onchange="updateRefTicker('${a.id}', this.value)">
+          <span style="font-size:10px;color:var(--text3);">해외 티커면 야후 시총 사용</span>
+        </div>` : '';
+
+      // 발행주식수 입력 (모든 종목)
+      const priceHint = isUSDRef
+        ? `<span style="font-size:10px;color:var(--text3);">· ${refTicker} USD 현재가 × 환율 × 발행주식수</span>`
+        : `<span style="font-size:10px;color:var(--text3);">· 현재가 × 발행주식수 자동 계산</span>`;
+      const sharesRow = `
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">발행주식수</span>
+          <input type="number" value="${shares}" placeholder="0" min="0" step="0.1"
+            style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);"
+            onchange="updateShares('${a.id}', this.value)">
+          <span style="font-size:12px;color:var(--text3);">만주</span>
+          ${mktcapBadge ? `<span style="font-size:11px;color:var(--text3);">→ 시총 ${mktcapBadge}</span>` : ''}
+          ${priceHint}
+        </div>`;
+
+      return `<div style="margin-bottom:14px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="flex:1;font-size:13px;font-weight:500;">${a.name}</span>
+          <span class="badge badge-${a.type}" style="font-size:10px;">${typeName(a.type)}</span>
+          <div>${perBadge}</div>
+        </div>
+        ${refTickerRow}
+        ${sharesRow}
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--text3);min-width:70px;">26년 예상 순이익</span>
+          <input type="number" value="${earnings}" placeholder="0" min="0" step="1"
+            style="width:110px;padding:6px 10px;font-size:13px;border:1px solid var(--border2);border-radius:6px;background:var(--bg);color:var(--text);"
+            onchange="updateFwdEarnings('${a.id}', this.value)">
+          <span style="font-size:12px;color:var(--text3);">억원</span>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // 시가총액 현황 테이블
+  const statusEl = document.getElementById('mktcap-status-list');
+  if (!statusEl) return;
+  const allValuable = state.assets.filter(a => a.active && (a.type === 'stock' || a.type === 'etf' || a.type === 'crypto'));
+  if (!allValuable.length) { statusEl.innerHTML = '<div class="empty">종목이 없습니다.</div>'; return; }
+  const usdkrw = state.mktcap?.['usdkrw'];
+  statusEl.innerHTML = `
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">
+      <button class="btn btn-sm" onclick="fetchMarketCaps()">↻ 해외 시총 새로고침</button>
+      ${usdkrw ? `<span style="font-size:11px;color:var(--text3);">USD/KRW ${usdkrw.toLocaleString()}원</span>` : ''}
+      <span style="font-size:11px;color:var(--text3);">· 국내 종목은 현재가 × 발행주식수 자동 계산</span>
+    </div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead><tr>
+        <th style="text-align:left;color:var(--text3);font-size:11px;letter-spacing:0.05em;padding:6px 10px;border-bottom:1px solid var(--border);">종목</th>
+        <th style="text-align:left;color:var(--text3);font-size:11px;letter-spacing:0.05em;padding:6px 10px;border-bottom:1px solid var(--border);">시가총액</th>
+        <th style="text-align:left;color:var(--text3);font-size:11px;letter-spacing:0.05em;padding:6px 10px;border-bottom:1px solid var(--border);">Forward PER</th>
+      </tr></thead>
+      <tbody>${allValuable.map(a => {
+        let mcDisplay = '-', perDisplay = '';
+        if (a.type === 'crypto' && a.id === 'btc') {
+          const mc = state.mktcap?.['btc_usd'];
+          mcDisplay = mc ? `<span class="mono" style="color:var(--accent2);">$${fmtMktcap(mc)}</span>` : '<span style="color:var(--text3);font-size:11px;">-</span>';
+          perDisplay = '<span style="color:var(--text3);">-</span>';
+        } else if (a.type === 'stock' || a.type === 'etf') {
+          const mc = getCalcMktcap(a.id);
+          const refTicker = state.valuation?.[a.id]?.refTicker?.trim();
+          const isUSDRef = refTicker && !refTicker.endsWith('.KS') && !refTicker.endsWith('.KQ');
+          if (mc) {
+            mcDisplay = `<span class="mono">${fmtMktcapKRW(mc)}</span>`;
+            if (isUSDRef) mcDisplay += `<span style="font-size:10px;color:var(--text3);margin-left:4px;">(${refTicker})</span>`;
+          } else {
+            const shares = state.valuation?.[a.id]?.shares;
+            mcDisplay = isUSDRef
+              ? `<span style="color:var(--text3);font-size:11px;">시총 조회 중...</span>`
+              : `<span style="color:var(--text3);font-size:11px;">${shares ? '현재가 조회 중' : '발행주식수 미입력'}</span>`;
+          }
+          const per = getForwardPER(a.id);
+          const earnings = state.valuation?.[a.id]?.fwdEarnings;
+          perDisplay = per
+            ? `<span style="color:${per<15?'var(--up)':per<25?'var(--gold)':'var(--down)'};" class="mono">${per.toFixed(1)}x</span>`
+            : `<span style="color:var(--text3);">${earnings ? (mc ? '-' : '시총 필요') : '순이익 미입력'}</span>`;
+        }
+        return `<tr>
+          <td style="padding:10px;border-bottom:1px solid var(--border);"><strong>${a.name}</strong></td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);">${mcDisplay}</td>
+          <td style="padding:10px;border-bottom:1px solid var(--border);">${perDisplay}</td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table>`;
+}
+
+function updateFwdEarnings(id, val) {
+  if (!state.valuation) state.valuation = {};
+  if (!state.valuation[id]) state.valuation[id] = {};
+  state.valuation[id].fwdEarnings = parseFloat(val) || 0;
+  saveState();
+  renderValuationPage();
+  renderHoldings();
+}
+
+function updateShares(id, val) {
+  if (!state.valuation) state.valuation = {};
+  if (!state.valuation[id]) state.valuation[id] = {};
+  state.valuation[id].shares = parseFloat(val) || 0;
+  saveState();
+  renderValuationPage();
+  renderHoldings();
+}
+
+function updateRefTicker(id, val) {
+  if (!state.valuation) state.valuation = {};
+  if (!state.valuation[id]) state.valuation[id] = {};
+  state.valuation[id].refTicker = val.trim().toUpperCase();
+  saveState();
+  // 참조 티커 바꾸면 즉시 시가총액 재조회
+  fetchMarketCaps();
+}
+
+// ==================== INCOME ====================
+function calcInsurance(annualSalary) {
+  // annualSalary: 만원 단위
+  const monthly = annualSalary / 12;
+
+  // 국민연금: 4.5%, 월 상한 590만원(= 연금보험료 월 상한 26.55만, 기준소득월액 상한 590만)
+  const npBase = Math.min(monthly, 590); // 만원
+  const np = npBase * 0.045 * 12; // 연간 (만원)
+
+  // 건강보험: 3.545%
+  const hi = monthly * 0.03545 * 12;
+
+  // 장기요양: 건보료의 12.95%
+  const ltc = hi * 0.1295;
+
+  // 고용보험: 0.9%
+  const ei = monthly * 0.009 * 12;
+
+  return {
+    np:   Math.round(np * 10) / 10,
+    hi:   Math.round(hi * 10) / 10,
+    ltc:  Math.round(ltc * 10) / 10,
+    ei:   Math.round(ei * 10) / 10,
+    total: Math.round((np + hi + ltc + ei) * 10) / 10
+  };
+}
+
+function calcNet(salary, incomeTax, dependents) {
+  // salary, incomeTax: 만원
+  const ins = calcInsurance(salary);
+  const localTax = Math.round(incomeTax * 0.1 * 10) / 10; // 지방소득세 10%
+  const totalDeduct = ins.total + incomeTax + localTax;
+  const net = Math.round((salary - totalDeduct) * 10) / 10;
+  return { ins, localTax, totalDeduct, net };
+}
+
+function updateIncomePreview() {
+  const salary = parseFloat(document.getElementById('inc-salary').value) || 0;
+  const incomeTax = parseFloat(document.getElementById('inc-tax').value) || 0;
+  const dependents = parseInt(document.getElementById('inc-dependents').value) || 1;
+  const prev = document.getElementById('inc-preview');
+  if (!salary) { prev.textContent = '연봉과 소득세를 입력하면 실수령액 미리보기가 표시됩니다.'; return; }
+  const { ins, localTax, totalDeduct, net } = calcNet(salary, incomeTax, dependents);
+  prev.innerHTML = `
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <div><span style="color:var(--text3);font-size:11px;">4대보험</span><br><strong>${ins.total.toLocaleString()}만원</strong></div>
+      <div><span style="color:var(--text3);font-size:11px;">소득세+지방세</span><br><strong>${(incomeTax+localTax).toLocaleString()}만원</strong></div>
+      <div><span style="color:var(--text3);font-size:11px;">총 공제</span><br><strong class="down">${totalDeduct.toLocaleString()}만원</strong></div>
+      <div><span style="color:var(--text3);font-size:11px;">연 실수령</span><br><strong class="up" style="font-size:16px;">${net.toLocaleString()}만원</strong></div>
+      <div><span style="color:var(--text3);font-size:11px;">월 실수령</span><br><strong class="up">${(net/12).toFixed(1)}만원</strong></div>
+    </div>`;
+}
+
+function addIncomeYear() {
+  if (isReadOnly) return;
+  const year = parseInt(document.getElementById('inc-year').value);
+  const salary = parseFloat(document.getElementById('inc-salary').value);
+  const incomeTax = parseFloat(document.getElementById('inc-tax').value) || 0;
+  const dependents = parseInt(document.getElementById('inc-dependents').value) || 1;
+  if (!year || !salary) { alert('연도와 연봉을 입력해주세요.'); return; }
+  if (!state.income) state.income = [];
+  const existing = state.income.findIndex(i => i.year === year);
+  const { net, totalDeduct, ins, localTax } = calcNet(salary, incomeTax, dependents);
+  const entry = { year, salary, dependents, incomeTax, localTax, ins, totalDeduct, net };
+  if (existing >= 0) {
+    if (!confirm(`${year}년 데이터가 이미 있어요. 덮어쓸까요?`)) return;
+    state.income[existing] = entry;
+  } else {
+    state.income.push(entry);
+    state.income.sort((a,b) => a.year - b.year);
+  }
+  saveState();
+  renderIncomePage();
+  renderTrend(); // 그래프 즉시 반영
+  document.getElementById('inc-salary').value = '';
+  document.getElementById('inc-tax').value = '';
+  document.getElementById('inc-preview').textContent = '연봉과 소득세를 입력하면 실수령액 미리보기가 표시됩니다.';
+}
+
+function deleteIncomeYear(year) {
+  if (!confirm(`${year}년 급여 데이터를 삭제할까요?`)) return;
+  state.income = (state.income || []).filter(i => i.year !== year);
+  saveState();
+  renderIncomePage();
+  renderTrend();
+}
+
+function renderIncomePage() {
+  if (!state.income) state.income = [];
+  const tbody = document.getElementById('income-tbody');
+  if (!tbody) return;
+
+  // preview 이벤트 연결
+  ['inc-salary','inc-tax','inc-dependents'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el._bound) { el.addEventListener('input', updateIncomePreview); el._bound = true; }
+  });
+
+  if (!state.income.length) {
+    tbody.innerHTML = '<tr><td colspan="9" class="empty">등록된 급여 데이터가 없습니다.</td></tr>';
+    document.getElementById('inc-total-gross').textContent = '-';
+    document.getElementById('inc-total-net').textContent = '-';
+    document.getElementById('inc-total-deduct').textContent = '-';
+    return;
+  }
+
+  tbody.innerHTML = state.income.map(i => `<tr>
+    <td><strong>${i.year}년</strong></td>
+    <td class="mono">${i.salary.toLocaleString()}만</td>
+    <td class="mono down">${i.ins.np.toLocaleString()}만</td>
+    <td class="mono down">${(i.ins.hi + i.ins.ltc).toFixed(1)}만</td>
+    <td class="mono down">${i.ins.ei.toLocaleString()}만</td>
+    <td class="mono down">${(i.incomeTax + i.localTax).toFixed(1)}만</td>
+    <td class="mono up" style="font-weight:700;">${i.net.toLocaleString()}만</td>
+    <td class="mono">${(i.net/12).toFixed(1)}만</td>
+    <td><button class="del-btn" onclick="deleteIncomeYear(${i.year})">✕</button></td>
+  </tr>`).join('');
+
+  const totalGross  = state.income.reduce((s,i) => s + i.salary, 0);
+  const totalNet    = state.income.reduce((s,i) => s + i.net, 0);
+  const totalDeduct = state.income.reduce((s,i) => s + i.totalDeduct, 0);
+  document.getElementById('inc-total-gross').textContent  = Math.round(totalGross).toLocaleString() + '만원';
+  document.getElementById('inc-total-net').textContent    = Math.round(totalNet).toLocaleString() + '만원';
+  document.getElementById('inc-total-deduct').textContent = Math.round(totalDeduct).toLocaleString() + '만원';
+}
+
+// 히스토리 날짜에 해당하는 누적 근로소득 계산 (만원)
+function getCumulativeIncome(dateStr) {
+  if (!state.income || !state.income.length) return null;
+  const d = new Date(dateStr);
+  const year = d.getFullYear();
+  const month = d.getMonth() + 1; // 1~12
+  let cumulative = 0;
+  let hasData = false;
+  for (const inc of state.income) {
+    if (inc.year < year) {
+      cumulative += inc.net;
+      hasData = true;
+    } else if (inc.year === year) {
+      // 해당 연도는 월 비율로 계산
+      cumulative += (inc.net / 12) * month;
+      hasData = true;
+    }
+  }
+  return hasData ? cumulative * 10000 : null; // 원 단위로 변환
+}
+
+// ==================== TODAY SNAPSHOT (실시간 반영) ====================
+function upsertTodaySnapshot() {
+  if (isReadOnly) return;
+  const active = state.assets.filter(a => a.active);
+  const totalValue = active.reduce((s, a) => {
+    const v = getCurrentValue(a);
+    return s + (v !== null ? v : 0);
+  }, 0);
+  const totalInvested = active.reduce((s, a) => {
+    const v = getCurrentValue(a);
+    return s + (v !== null ? getInvested(a) : 0);
+  }, 0);
+  const roi = totalInvested ? +((totalValue - totalInvested) / totalInvested * 100).toFixed(1) : 0;
+  const snap = [today(), Math.round(totalValue), Math.round(totalInvested), roi];
+
+  const idx = state.history.findIndex(h => h[0] === today());
+  if (idx >= 0) state.history[idx] = snap;
+  else state.history.push(snap);
+
+  saveState();
+  renderTrend();
+}
+
+// ==================== SNAPSHOT ====================
+function scheduleSnapshot() {
+  const now = new Date();
+  const isSunday = now.getDay()===0;
+  const lastSnap = state.lastSnapshot;
+  if (isSunday && (!lastSnap || lastSnap !== today())) saveSnapshot();
+}
+
+function saveSnapshot() {
+  if (isReadOnly) return;
+  const active = state.assets.filter(a=>a.active);
+  const totalValue = active.reduce((s,a)=>s+getCurrentValue(a),0);
+  const totalInvested = active.reduce((s,a)=>s+getInvested(a),0);
+  const roi = totalInvested ? +((totalValue-totalInvested)/totalInvested*100).toFixed(1) : 0;
+  const snap = [today(), Math.round(totalValue), Math.round(totalInvested), roi];
+
+  // 같은 날짜면 덮어쓰기
+  const idx = state.history.findIndex(h=>h[0]===today());
+  if (idx>=0) state.history[idx]=snap;
+  else state.history.push(snap);
+
+  state.lastSnapshot = today();
+  saveState();
+  updateLastSnapshot();
+  renderTrend();
+  alert('스냅샷이 저장됐어요!');
+}
+
+function updateLastSnapshot() {
+  document.getElementById('last-snapshot').textContent = state.lastSnapshot || '없음';
+}
+
+// ==================== BACKUP ====================
+function exportData() {
+  const blob = new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `portfolio_${today()}.json`;
+  a.click();
+}
+
+function importData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (confirm('현재 데이터를 불러온 파일로 덮어쓸까요?')) {
+        state = {...state, ...data};
+        saveState();
+        populateTickerSelect();
+        renderAssetList();
+        renderManualPriceList();
+        renderTradeList();
+        updateLastSnapshot();
+        refreshPrices();
+        alert('불러오기 완료!');
+      }
+    } catch(e) { alert('파일 형식이 올바르지 않아요.'); }
+  };
+  reader.readAsText(file);
+}
+
+function clearData() {
+  if (!confirm('모든 데이터를 초기화할까요? 되돌릴 수 없습니다.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  state.assets = JSON.parse(JSON.stringify(DEFAULT_ASSETS));
+  state.trades = JSON.parse(JSON.stringify(DEFAULT_TRADES));
+  state.history = JSON.parse(JSON.stringify(WEEKLY_HISTORY));
+  state.prices = {};
+  state.lastSnapshot = null;
+  saveState();
+  populateTickerSelect();
+  renderAssetList();
+  renderManualPriceList();
+  renderLiabilityList();
+  renderTradeList();
+  updateLastSnapshot();
+  alert('초기화 완료! 기본 데이터로 복원됐어요.');
+  refreshPrices();
+}
+
+// ==================== SHARE ====================
+function openShareModal() {
+  document.getElementById('share-modal').classList.add('open');
+  document.getElementById('share-box').style.display='none';
+  document.getElementById('copy-btn').style.display='none';
+}
+
+function generateShareLink() {
+  const shareData = {assets:state.assets, trades:state.trades, history:state.history, prices:state.prices};
+  const encoded = btoa(encodeURIComponent(JSON.stringify(shareData)));
+  const url = `${location.origin}${location.pathname}?${READONLY_PARAM}=${encoded}`;
+  document.getElementById('share-box').textContent = url;
+  document.getElementById('share-box').style.display='block';
+  document.getElementById('copy-btn').style.display='inline-block';
+}
+
+function copyShareLink() {
+  const url = document.getElementById('share-box').textContent;
+  navigator.clipboard.writeText(url).then(()=>alert('링크가 복사됐어요!'));
+}
+
+// ==================== UI HELPERS ====================
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  event.target.classList.add('active');
+  if (page==='trades') renderTradeList();
+  if (page==='assets') renderAssetList();
+  if (page==='valuation') renderValuationPage();
+  if (page==='income') renderIncomePage();
+  if (page==='settings') { renderManualPriceList(); renderLiabilityList(); updateLastSnapshot(); }
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function showTip(e, name, value, pct) {
+  const tip = document.getElementById('tooltip');
+  tip.innerHTML=`<strong>${name}</strong><br>${fmt(value)}원 · ${pct}%`;
+  tip.style.left=(e.clientX+14)+'px';
+  tip.style.top=(e.clientY-10)+'px';
+  tip.classList.add('show');
+}
+function hideTip() { document.getElementById('tooltip').classList.remove('show'); }
+document.addEventListener('mousemove',e=>{
+  const tip=document.getElementById('tooltip');
+  if(tip.classList.contains('show')){tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY-10)+'px';}
+});
+
+function fmt(v) {
+  if (!v) return '0';
+  const abs = Math.abs(v);
+  const sign = v<0?'-':'';
+  if (abs>=1e8) return sign+(abs/1e8).toFixed(2)+'억';
+  if (abs>=1e4) return sign+Math.round(abs/1e4).toLocaleString()+'만';
+  return sign+Math.round(abs).toLocaleString();
+}
+
+function typeName(t) { return {stock:'주식',etf:'ETF',crypto:'크립토',other:'기타'}[t]||t; }
+
+
+// ==================== 국토부 분양권전매 실거래가 (금정역푸르지오그랑블 59㎡) ====================
+async function fetchGjPrice() {
+  // 군포시 금정동 법정동코드 앞 5자리: 41171
+  const LAWD_CD = '41171';
+  const SERVICE_KEY = '5c4cccd14ad8a88b3916b0ff6598bb325a61b37f095168a5aa3a39afcf1c74e6';
+  const BASE = 'https://apis.data.go.kr/1613000/RTMSDataSvcAptRtms/getRTMSDataSvcAptRtms';
+
+  const now = new Date();
+  const months = [];
+  // 전매제한 해제(2025.06~) 이후부터 조회 — 최근 12개월
+  for (let i = 0; i < 12; i++) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    months.push(d.getFullYear() + String(d.getMonth()+1).padStart(2,'0'));
+  }
+
+  const PROXIES = [
+    (u) => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
+    (u) => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+  ];
+
+  let bestTrade = null;
+
+  outer:
+  for (const ym of months) {
+    const apiUrl = BASE + '?serviceKey=' + SERVICE_KEY + '&LAWD_CD=' + LAWD_CD + '&DEAL_YMD=' + ym + '&pageNo=1&numOfRows=100&_type=json';
+    for (const makeProxy of PROXIES) {
+      try {
+        const res = await fetch(makeProxy(apiUrl), { signal: AbortSignal.timeout(9000) });
+        if (!res.ok) continue;
+        const text = await res.text();
+        let items = [];
+
+        if (text.trim().startsWith('{') || text.trim().startsWith('[')) {
+          const data = JSON.parse(text);
+          items = data?.response?.body?.items?.item || [];
+          if (!Array.isArray(items)) items = items ? [items] : [];
+        } else if (text.includes('<item>')) {
+          const xml = new DOMParser().parseFromString(text, 'text/xml');
+          xml.querySelectorAll('item').forEach(el => {
+            const g = (t) => el.querySelector(t)?.textContent?.trim() || '';
+            items.push({
+              '아파트': g('아파트'), '전용면적': g('전용면적'),
+              '거래금액': g('거래금액'), '분양가격': g('분양가격'),
+              '년': g('년'), '월': g('월'), '일': g('일')
+            });
+          });
+        }
+
+        if (!items.length) continue;
+
+        // 푸르지오그랑블 + 전용 59㎡ 필터
+        const filtered = items.filter(it => {
+          const nm = it['아파트'] || it.aptNm || '';
+          const ar = parseFloat(it['전용면적'] || it.excluUseAr || 0);
+          return (nm.includes('푸르지오그랑블') || nm.includes('푸르지오 그랑블')) && ar >= 58 && ar <= 61;
+        });
+
+        if (filtered.length) {
+          bestTrade = filtered.sort((a, b) => {
+            const da = (a['년']||'') + '-' + String(a['월']||'').padStart(2,'0') + '-' + String(a['일']||'').padStart(2,'0');
+            const db = (b['년']||'') + '-' + String(b['월']||'').padStart(2,'0') + '-' + String(b['일']||'').padStart(2,'0');
+            return db.localeCompare(da);
+          })[0];
+          break outer;
+        }
+      } catch(e) { continue; }
+    }
+  }
+
+  const el     = document.getElementById('mk-gj');
+  const subEl  = document.getElementById('mk-gj-sub');
+  const dateEl = document.getElementById('mk-gj-date');
+
+  if (bestTrade) {
+    const rawAmt = (bestTrade['거래금액'] || '').replace(/[,\s]/g, '');
+    const amt = parseInt(rawAmt) * 10000;
+    const yr  = bestTrade['년'] || '';
+    const mo  = String(bestTrade['월'] || '').padStart(2, '0');
+    const dy  = String(bestTrade['일'] || '').padStart(2, '0');
+    const ar  = parseFloat(bestTrade['전용면적'] || 0).toFixed(1);
+
+    // 분양가 대비 프리미엄 계산
+    const rawBun = (bestTrade['분양가격'] || '').replace(/[,\s]/g, '');
+    const bunAmt = parseInt(rawBun) * 10000;
+    let premiumStr = '';
+    if (bunAmt > 0 && amt > 0) {
+      const premium = amt - bunAmt;
+      const sign = premium >= 0 ? '+' : '';
+      premiumStr = ' (P' + sign + fmt(premium) + ')';
+    }
+
+    if (amt > 0) {
+      el.textContent = fmt(amt) + '원';
+      el.style.color = 'var(--text)';
+      subEl.textContent = '전용 ' + ar + '㎡ 분양권전매' + premiumStr;
+      dateEl.textContent = yr + '.' + mo + '.' + dy + ' 계약';
+      return;
+    }
+  }
+
+  // 거래 없음
+  el.textContent = '거래없음';
+  el.style.color = 'var(--text3)';
+  subEl.textContent = '전용 59㎡ 분양권전매';
+  dateEl.textContent = '신고된 거래 없음';
+}
+
+// ==================== START ====================
+window.addEventListener('load', function() {
+  function waitForChart() {
+    if (typeof Chart !== 'undefined') { init(); }
+    else { setTimeout(waitForChart, 50); }
+  }
+  waitForChart();
+});
+</script>
+
+
+</body></html>
